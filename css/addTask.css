@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+}
+
+
+main {
+    display: flex;
+}
+
+
+.formularMainContainer {
+    font-family: 'PT Sans';
+    margin-left: 300px;
+}
+
+
+form {
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+
+.addTaskHeadline {}
+
+
+.addTaskHeadline h2 {
+    margin-bottom: 0;
+}
+
+
+.addTaskHeadline p {
+    color: #3a3ab6;
+    margin-top: 5px;
+}
+
+
+.leftSplit {
+    padding-right: 40px;
+}
+
+
+.leftSplit h2 {
+    color: #3a3ab6;
+}
+
+
+.title {}
+
+
+.title h2 {}
+
+
+.title input {
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    height: 50px;
+    width: 300px;
+    padding-left: 5px;
+    font-size: 18px;
+    outline: unset;
+}
+
+
+.category {}
+
+
+select {
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    height: 52px;
+    width: 315px;
+    padding-left: 5px;
+    font-size: 18px;
+    outline: unset;
+    cursor: pointer;
+}
+
+
+.description {}
+
+
+textarea {
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    height: 130px;
+    width: 300px;
+    padding-left: 5px;
+    font-size: 18px;
+    outline: unset;
+    resize: none;
+}
+
+
+.rightSplit {}
+
+
+.rightSplit h2 {
+    color: #3a3ab6;
+}
+
+
+.dueDate {}
+
+
+.dueDate input {
+    cursor: pointer;
+    outline: unset;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    width: 300px;
+    height: 52px;
+    padding-left: 5px;
+    font-size: 18px;
+}
+
+
+.urgency {}
+
+
+.assignedTo {}
+
+
+.assignedToImgContainerMain {
+    display: flex;
+    padding-top: 20px;
+}
+
+
+.assignedToImgContainer {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.assignedToImgContainer p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 50px;
+    padding-right: 20px;
+}
+
+
+.cancelButton {
+    border: unset;
+    background-color: unset;
+    cursor: pointer;
+    color: #3a3ab6;
+    font-size: 18px;
+    padding-right: 35px;
+}
+
+
+.cancelButton:hover {
+    opacity: 0.8;
+}
+
+
+.createTaskButton {
+    border: unset;
+    background-color: #3a3ab6;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+
+.createTaskButton:hover {
+    opacity: 0.8;
+}

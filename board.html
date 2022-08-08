@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Board</title>
+
+    <link rel="shortcut icon" href="icons/logo.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="js/board.js"></script>
+    <script src="js/miniBackend.js"></script>
+</head>
+
+<body onload="includeHTML(), init()">
+
+    <main>
+        <!------------------------------------------>
+        <div w3-include-html="navbar/navbar.html"></div>
+        <!------------------------------------------>
+        <div class="columnContainer">
+            <div class="columnContainerChild">
+                <h2>TO DO</h2>
+                <div class="column"></div>
+            </div>
+
+
+            <div class="columnContainerChild">
+                <h2>IN PROGRESS</h2>
+                <div class="column"></div>
+            </div>
+
+
+            <div class="columnContainerChild">
+                <h2>TESTING</h2>
+                <div class="column"></div>
+            </div>
+
+
+            <div class="columnContainerChild">
+                <h2>DONE</h2>
+                <div class="column"></div>
+            </div>
+        </div>
+        <!------------------------------------------>
+    </main>
+
+</body>
+
+</html>

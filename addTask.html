@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Add Task</title>
+
+    <link rel="shortcut icon" href="icons/logo.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/addTask.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="js/addTask.js"></script>
+    <script src="js/miniBackend.js"></script>
+</head>
+
+<body onload="includeHTML(), init()">
+
+    <main>
+        <!------------------------------------------>
+        <div w3-include-html="navbar/navbar.html"></div>
+        <!------------------------------------------>
+        <div class="formularMainContainer">
+            <div class="addTaskHeadline">
+                <h2>Add Task</h2>
+                <p>Learning Management System Project</p>
+            </div>
+            <!------------------------------------------>
+            <form onsubmit="createTask(); return false;">
+                <div class="leftSplit">
+                    <div class="title">
+                        <h2>TITLE</h2>
+                        <input required type="text" placeholder="Titel hier einfügen...">
+                    </div>
+                    <div class="category">
+                        <h2>CATEGORY</h2>
+                        <select>
+                            <option>Marketing</option>
+                            <option>Product</option>
+                            <option>Sale</option>
+                        </select>
+                    </div>
+                    <div class="description">
+                        <h2>DESCRIPTION</h2>
+                        <textarea required maxlength="180"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="rightSplit">
+                    <div class="dueDate">
+                        <h2>DUE DATE</h2>
+                        <input type="date">
+                    </div>
+                    <div class="urgency">
+                        <h2>URGENCY</h2>
+                        <select>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                    <div class="assignedTo">
+                        <h2>ASSIGNED TO</h2>
+                    </div>
+                    <div class="assignedToImgContainerMain">
+                        <div class="assignedToImgContainer">
+                            <p>TP</p>
+                        </div>
+                        <div class="assignedToImgContainer">
+                            <p>IG</p>
+                        </div>
+                        <div class="assignedToImgContainer">
+                            <p>VW</p>
+                        </div>
+                        <div class="assignedToImgContainer">
+                            <p>RD</p>
+                        </div>
+                    </div>
+                    <div class="buttonContainer">
+                        <button class="cancelButton">CANCEL</button>
+                        <button class="createTaskButton">CREATE TASK</button>
+                    </div>
+                </div>
+            </form>
+            <!------------------------------------------>
+        </div>
+    </main>
+</body>
+
+
+</html>

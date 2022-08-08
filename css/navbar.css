@@ -1,0 +1,33 @@
+nav {
+    height: 100vh;
+    width: 200px;
+    font-size: 20px;
+    font-family: 'PT Sans';
+    background-color: #03037f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+nav img {
+    padding-top: 30px;
+}
+
+
+.containerWithSections {
+    margin-top: 60px;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+a:hover {
+    cursor: pointer;
+    /****** Hovereffekt mit Border-left noch nachtragen. ******/
+}

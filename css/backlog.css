@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+
+
+main {
+    display: flex;
+}
+
+
+.backlogMainContainer {
+    font-family: 'PT Sans';
+    margin-left: 20px;
+}
+
+
+.backlogHeadline {}
+
+
+.backlogHeadline h2 {
+    margin-bottom: 0;
+}
+
+
+.backlogHeadline p {
+    margin-top: 5px;
+    color: #3a3ab6;
+}
