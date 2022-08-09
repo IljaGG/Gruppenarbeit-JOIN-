@@ -11,11 +11,38 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/addTask.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <script src="js/addTask.js"></script>
-    <script src="js/miniBackend.js"></script>
+    <script src="./js/mini_backend.js"></script>
+    <script>setURL('https://gruppe-292-join.developerakademie.net/smallest_backend_ever');</script>
+    <script src="./js/addTask.js"></script>
 </head>
 
 <body onload="includeHTML(), init()">
+    <div id="overlayUser" class="containerOverlay" style="display: none">
+        <div class="contentOverlay">
+            <p>Please assign the task to at least one user</p>
+            <button onclick="overlay('overlayUser')" class="createTaskButton">Ok</button>
+        </div>
+    </div>
+    <div id="overlayTaskBordBacklog" class="containerOverlay" style="display: none">
+        <div class="contentOverlay">
+            <p>Add the task to "Backlog" for reclining or "Do To" for processing</p>
+            <div class="overlayItems">
+                <button onclick="overlay('overlayTaskConfirmation'), overlay('overlayTaskBordBacklog'), addTask('backlog')" class="createTaskButton">Backlog</button>
+                <button onclick="overlay('overlayTaskConfirmation'), overlay('overlayTaskBordBacklog'), addTask('toDo')" class="createTaskButton">To Do</button>
+                <div class="cancelButton" onclick="overlay('overlayTaskBordBacklog')">Cancel</div>
+            </div>
+        </div>
+    </div>
+    <div id="overlayTaskConfirmation" class="containerOverlay" style="display: none">
+        <div class="contentOverlay">
+            <p class="taskDone">Task done!</p>
+            <div class="overlayItems">
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Go to Backlog</button>
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Go to To Dos</button>
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Create a new Task</button>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!------------------------------------------>
@@ -27,15 +54,15 @@
                 <p>Learning Management System Project</p>
             </div>
             <!------------------------------------------>
-            <form onsubmit="createTask(); return false;">
+            <form onsubmit="createTask(); return false">
                 <div class="leftSplit">
                     <div class="title">
                         <h2>TITLE</h2>
-                        <input required type="text" placeholder="Titel hier einfügen...">
+                        <input id="taskTitle" required type="text" placeholder="Titel hier einfügen...">
                     </div>
                     <div class="category">
                         <h2>CATEGORY</h2>
-                        <select>
+                        <select id="taskCategory">
                             <option>Marketing</option>
                             <option>Product</option>
                             <option>Sale</option>
@@ -43,7 +70,7 @@
                     </div>
                     <div class="description">
                         <h2>DESCRIPTION</h2>
-                        <textarea required maxlength="180"></textarea>
+                        <textarea id="taskDescription" required maxlength="180"></textarea>
                     </div>
                 </div>
 
@@ -51,11 +78,11 @@
                 <div class="rightSplit">
                     <div class="dueDate">
                         <h2>DUE DATE</h2>
-                        <input type="date">
+                        <input required id="taskDueDate" type="date">
                     </div>
                     <div class="urgency">
                         <h2>URGENCY</h2>
-                        <select>
+                        <select id="taskUrgency">
                             <option>Low</option>
                             <option>Medium</option>
                             <option>High</option>
@@ -65,21 +92,21 @@
                         <h2>ASSIGNED TO</h2>
                     </div>
                     <div class="assignedToImgContainerMain">
-                        <div class="assignedToImgContainer">
+                        <div id="user-tp" onclick="selectUser('user-tp')" class="assignedToImgContainer">
                             <p>TP</p>
                         </div>
-                        <div class="assignedToImgContainer">
+                        <div id="user-ig" onclick="selectUser('user-ig')" class="assignedToImgContainer">
                             <p>IG</p>
                         </div>
-                        <div class="assignedToImgContainer">
+                        <div id="user-vw" onclick="selectUser('user-vw')" class="assignedToImgContainer">
                             <p>VW</p>
                         </div>
-                        <div class="assignedToImgContainer">
+                        <div id="user-rd" onclick="selectUser('user-rd')" class="assignedToImgContainer">
                             <p>RD</p>
                         </div>
                     </div>
                     <div class="buttonContainer">
-                        <button class="cancelButton">CANCEL</button>
+                        <div class="cancelButton" onclick="resetInputFields()">CANCEL</div>
                         <button class="createTaskButton">CREATE TASK</button>
                     </div>
                 </div>
