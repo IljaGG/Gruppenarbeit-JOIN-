@@ -26,3 +26,15 @@ main {
     margin-top: 5px;
     color: #3a3ab6;
 }
+
+.backlogWrapper {
+    width: 700px;
+}
+
+.backlogHeadlines {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: 'PT Sans';
+    color: #3a3ab6;
+}
