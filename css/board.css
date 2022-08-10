@@ -29,6 +29,27 @@ main {
 
 
 .column {
-    height: 20%;
+    height: 75%;
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.draggedElement {
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+
+.draggedElement:hover {
+    cursor: pointer;
+}
+
+
+.textCenter {
+    text-align: center;
+}
+
+
+.highlight {
+    background-color: rgba(0, 0, 0, 0.3);
 }

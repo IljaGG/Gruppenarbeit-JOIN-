@@ -1,6 +1,7 @@
-setURL('https://gruppe-292-join.developerakademie.net/smallest_backend_ever');
-
 let users = [];
+
+
+setURL('https://gruppe-292-join.developerakademie.net/smallest_backend_ever');
 
 
 async function init() {

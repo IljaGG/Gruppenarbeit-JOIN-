@@ -1,6 +1,9 @@
 let selectedUser = [];
 let allTasks = [];
 
+setURL('https://gruppe-292-join.developerakademie.net/smallest_backend_ever');
+
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');    //////// Greift bzw. fragt nach allen Elemente mit "w3-include-html".  //////// 
     for (let i = 0; i < includeElements.length; i++) {           //////// Standar for-schleife ////////      
@@ -56,7 +59,7 @@ function createTask() {
  * This function is used to create the Task and add it to the storage
  *  * @param {string} taskStatus -- after creating a task the user is asked to push the task into backlog or toDo
  */
-function addTask(taskStatus){
+function addTask(taskStatus) {
     [title, category, description, dueDate,
         createdDate, urgency, assignedTo] = getValuesForTasks();
     let task = {
@@ -113,7 +116,7 @@ function checkIfUserIsSelected() {
     let user = document.getElementsByClassName('assignedToImgContainer');
     let selectedUserCounter = 0;
     for (let i = 0; i < user.length; i++) {
-        if(user[i].classList.contains('avatar-selected')){
+        if (user[i].classList.contains('avatar-selected')) {
             selectedUserCounter++;
         }
     }
@@ -124,11 +127,11 @@ function checkIfUserIsSelected() {
  * This function is used to put the user through the process after clicking the button 'CREATE TASK'
  * @param {string} id -- the ID of the container where the display-property should be changed
  */
-function overlay(id){
+function overlay(id) {
     let container = document.getElementById(id);
-    if(container.style.display == 'flex'){
+    if (container.style.display == 'flex') {
         container.style.display = 'none'
-    } else{
+    } else {
         container.style.display = 'flex'
     }
 }

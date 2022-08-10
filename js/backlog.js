@@ -1,3 +1,12 @@
+async function init() {
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+    backend.setItem('Test', 'Hallo')
+
+    console.log(users);
+}
+
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');    //////// Greift bzw. fragt nach allen Elemente mit "w3-include-html".  //////// 
     for (let i = 0; i < includeElements.length; i++) {           //////// Standar for-schleife ////////      
