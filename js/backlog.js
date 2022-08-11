@@ -2,8 +2,9 @@ async function init() {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
     backend.setItem('Test', 'Hallo')
-
+    render();
     console.log(users);
+    
 }
 
 
@@ -18,6 +19,20 @@ async function includeHTML() {
         } else {
             element.innerHTML = 'Page not found';
         }
+    }
+}
+
+function render() {
+    backlogTasks = document.getElementById('backlogTasks');
+    backlogTasks.innerHTML = '';
+
+   
+
+    for (let i = 0; i < allTasks.length; i++) {
+        const backlogTask = allTasks[i];
+        backlogTasks.innerHTML += `
+       <div class="backlogCard">${backlogTask['assignedTo']}</div>
+        `
     }
 }
 
