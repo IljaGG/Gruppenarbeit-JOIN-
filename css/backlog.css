@@ -7,15 +7,23 @@ main {
     display: flex;
 }
 
+.text-align-right {
+    text-align: right;
+}
+
+.centered {
+    width: 25%;
+    text-align: center;
+}
+
+.description-width {
+    width: 35%;
+}
 
 .backlogMainContainer {
     font-family: 'PT Sans';
     margin-left: 20px;
 }
-
-
-.backlogHeadline {}
-
 
 .backlogHeadline h2 {
     margin-bottom: 0;
@@ -26,7 +34,6 @@ main {
     margin-top: 5px;
     color: #3a3ab6;
 }
-
 .backlogWrapper {
     width: 700px;
 }
@@ -37,4 +44,17 @@ main {
     justify-content: space-between;
     font-family: 'PT Sans';
     color: #3a3ab6;
+}
+
+.backlogTasks {
+    display: flex;
+}
+
+.backlogCard {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4fb;
+    margin-bottom: 5px;
+    border-radius: 10px;
 }

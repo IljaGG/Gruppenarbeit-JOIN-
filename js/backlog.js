@@ -1,10 +1,11 @@
 async function init() {
     await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
+    users = await backend.getItem('users') || [];
+    allTasks = await backend.getItem('tasks') || [];
     backend.setItem('Test', 'Hallo')
     render();
     console.log(users);
-    
+
 }
 
 
@@ -26,13 +27,17 @@ function render() {
     backlogTasks = document.getElementById('backlogTasks');
     backlogTasks.innerHTML = '';
 
-   
+
 
     for (let i = 0; i < allTasks.length; i++) {
         const backlogTask = allTasks[i];
         backlogTasks.innerHTML += `
-       <div class="backlogCard">${backlogTask['assignedTo']}</div>
-        `
+    <div class="backlogCard">
+       <div class="description-width">${backlogTask['assignedTo']}</div>
+       <div class="centered">${backlogTask['category']}</div>
+       <div class="description-width text-align-right">${backlogTask['description']}</div>
+    </div>
+    `
     }
 }
 
