@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOIN</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="js/mini_backend.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/login.css">
     <script src="js/main.js"></script>
-    
+
 </head>
-<body onload="init()">
-    <input placeholder="Name" type="text" id="">
+
+<body onload="showLogin()">
+    <div class="loginContainer">
+
+        <div class="loginSection">
+
+            <div class="loginLeftside">
+                <img src="./img/joinlogo.png" alt="joinlogo">
+            </div>
+
+            <form class="rightSide" id="rightSide" return false>
+                <label class="userInfo" id="loginUser" for="uname"><b>Username</b></label>
+                <input required type="text" minlength="8" placeholder="Enter Username" name="uname">
+
+                <label class="userInfo" id="password" for="psw"><b>Password</b></label>
+                <input required type="password" minlength="8" placeholder="Enter Password" name="psw">
+
+                <button class="loginBtn" onsubmit="checkLogin(); return false">Login</button>
+                <button class="registerBtn" onsubmit="register(); return false">Registrieren</button>
+            </form>
+
+        </div>
+    </div>
 </body>
+
 </html>
