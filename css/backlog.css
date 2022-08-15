@@ -35,7 +35,7 @@ main {
     color: #3a3ab6;
 }
 .backlogWrapper {
-    width: 700px;
+    width: 70vw;
 }
 
 .backlogHeadlines {
@@ -51,10 +51,49 @@ main {
 }
 
 .backlogCard {
+    height: 70px;
     display: flex;
+    position: relative;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    padding-right: 10px;
     background-color: #f4f4fb;
     margin-bottom: 5px;
     border-radius: 10px;
+}
+
+.backlogCard img{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 15px;
+}
+
+.tiny-color {
+    height: 70px;
+    width: 5px;
+}
+
+.Marketing {
+    background-color: orange;
+    width: 5px;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.Product {
+    background-color: purple;
+    width: 5px;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.Sale {
+    background-color: green;
+    width: 5px;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
