@@ -6,33 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOIN</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/login.css">
-    <script src="js/main.js"></script>
-
+    <link rel="shortcut icon" href="icons/logo.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
+    <script src="/js/main.js"></script>
 </head>
 
-<body onload="showLogin()">
-    <div class="loginContainer">
+<!-- <body onload="checkIfUserIsLoggedIn()"> -->
+<div class="loginContainer">
 
-        <div class="loginSection">
+    <div class="loginSection">
 
-            <div class="loginLeftside">
-                <img src="./img/joinlogo.png" alt="joinlogo">
-            </div>
-
-            <form class="rightSide" id="rightSide" return false>
-                <label class="userInfo" id="loginUser" for="uname"><b>Username</b></label>
-                <input required type="text" minlength="8" placeholder="Enter Username" name="uname">
-
-                <label class="userInfo" id="password" for="psw"><b>Password</b></label>
-                <input required type="password" minlength="8" placeholder="Enter Password" name="psw">
-
-                <button class="loginBtn" onsubmit="checkLogin(); return false">Login</button>
-                <button class="registerBtn" onsubmit="register(); return false">Registrieren</button>
-            </form>
-
+        <div class="loginLeftside">
+            <img src="./img/joinlogo.png" alt="joinlogo">
         </div>
+
+        <form class="rightSide" id="rightSide" onsubmit="return false">
+
+            <h1 class="flex-center">Login</h1>
+
+            <div id="errorMessage"></div>
+
+            <div class="flex-column">
+                <input required type="text" id="userName" minlength="5" placeholder="Enter Username" name="uname">
+
+                <input required type="password" id="password" minlength="5" placeholder="Enter Password" name="psw">
+
+                <button class="btn" id="loginBtn" type="submit" required onclick="login()">Login</button>
+                <button class="btn" id="registerBtn" type="button" required
+                    onclick="showRegistrateSection()">Registrieren</button>
+
+                <div id="registrate" class="flex-column"></div>
+
+                <div class="flex-column guest">
+                    <button class="btn" id="guestBtn" type="button" required onclick="guestLogin()">log in
+                        as
+                        guest</button>
+                </div>
+
+            </div>
+        </form>
+
     </div>
+</div>
 </body>
 
 </html>
