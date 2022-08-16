@@ -2,14 +2,25 @@
     display: none;
 }
 
-.login {
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.loginContainer {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.loginContainer {
+.loginSection {
     display: flex;
 }
 
@@ -34,7 +45,9 @@
     width: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+    background-color: lightgray;
 }
 
 .userInfo {
@@ -44,25 +57,58 @@
 .rightSide input {
     height: 30px;
     margin-bottom: 20px;
+    border-radius: 5px;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
-.loginBtn {
+.btn {
     height: 30px;
+    width: 150px;
     border: unset;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-.loginBtn:hover {
+.btn:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.registerBtn {
-    height: 30px;
-    margin-top: 30px;
-    border: unset;
+.guest span {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    box-sizing: content-box;
+    background-color: #efeeef;
 }
 
-.registerBtn:hover {
+.guest span:hover {
+    color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#errorMessage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.errorBox {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.errorBox span {
+    font-size: 18px;
 }

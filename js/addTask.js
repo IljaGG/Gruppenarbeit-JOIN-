@@ -18,10 +18,12 @@ async function includeHTML() {
     }
 }
 
+
 async function init() {
     await downloadFromServer();
     allTasks = backend.getItem('tasks') || [];
 }
+
 
 /**
  * This function is used to select the "assigned to"-User. More than one user can be selected
