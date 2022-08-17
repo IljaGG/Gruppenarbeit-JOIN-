@@ -18,7 +18,7 @@
     <script src="js/backlog.js"></script>
 </head>
 
-<body onload="includeHTML(), init()">
+<body onload="includeHTML(), init(), checkIfUserIsLoggedIn()">
     <main>
         <!------------------------------------------>
         <div w3-include-html="navbar/navbar.html"></div>
@@ -31,9 +31,15 @@
             <!------------------------------------------>
             <div class="backlogWrapper">
                 <div class="backlogHeadlines">
-                    <div class="description-width"><h3>ASSIGNED TO</h3></div>
-                    <div class="centered"><h3>CATEGORY</h3></div>
-                    <div class="description-width text-align-right"><h3>DETAILS</h3></div>
+                    <div class="description-width">
+                        <h3>ASSIGNED TO</h3>
+                    </div>
+                    <div class="centered">
+                        <h3>CATEGORY</h3>
+                    </div>
+                    <div class="description-width text-align-right">
+                        <h3>DETAILS</h3>
+                    </div>
                 </div>
                 <div id="backlogTasks">
 
