@@ -29,6 +29,7 @@ function getRegistrated() {
             'email': email
         }];
         saveInLocalStorage(newUser);
+        setDefault();
         window.location.href = './board.html';
     }
 
@@ -68,7 +69,6 @@ function showRegistrateSection() {
 
 
 function checkIfUserIsLoggedIn() {
-
     if (localStorage.getItem("loggedInKey") === null) {
         window.location.href = './index.html'
     } else {
@@ -79,10 +79,13 @@ function checkIfUserIsLoggedIn() {
 
 
 function guestLogin() {
-    if (localStorage.getItem("loggedInKey") === null) {
-        localStorage.setItem('loggedInKey', loggedIn);
-    }
-
+    setDefault();
     window.location.href = './board.html';
 }
 
+
+function setDefault() {
+    if (localStorage.getItem("loggedInKey") === null) {
+        localStorage.setItem('loggedInKey', loggedIn);
+    }
+}
