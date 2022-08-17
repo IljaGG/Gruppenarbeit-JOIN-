@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <script src="js/board.js"></script>
+    <script src="js/includeHTML.js"></script>
     <script src="js/mini_backend.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/board.js"></script>
 </head>
 
-<body onload="includeHTML(), init(), updateHTML()">
+<body onload="includeHTML(), init()">
 
     <main>
         <!------------------------------------------>
@@ -25,25 +25,25 @@
         <div class="columnContainer">
             <div class="columnContainerChild">
                 <h2>TO DO</h2>
-                <div class="column" id="toDo" ondragover="allowDrop(event), highlight('toDo')" ondragleave="removeHighlight('toDo')" ondrop="moveTo('toDo')"></div>
+                <div class="column" id="toDo" ondragover="allowDrop(event), highlight('toDo')" ondragleave="removeHighlight('toDo')" ondrop="moveTo('toDo'), removeHighlight('toDo')"></div>
             </div>
 
 
             <div class="columnContainerChild">
                 <h2>IN PROGRESS</h2>
-                <div class="column" id="inProgress" ondragover="allowDrop(event), highlight('inProgress')" ondragleave="removeHighlight('inProgress')" ondrop="moveTo('inProgress')"></div>
+                <div class="column" id="inProgress" ondragover="allowDrop(event), highlight('inProgress')" ondragleave="removeHighlight('inProgress')" ondrop="moveTo('inProgress'), removeHighlight('inProgress')"></div>
             </div>
 
 
             <div class="columnContainerChild">
                 <h2>TESTING</h2>
-                <div class="column" id="testing" ondragover="allowDrop(event), highlight('testing')" ondragleave="removeHighlight('testing')" ondrop="moveTo('testing')"></div>
+                <div class="column" id="testing" ondragover="allowDrop(event), highlight('testing')" ondragleave="removeHighlight('testing')" ondrop="moveTo('testing'), removeHighlight('testing')"></div>
             </div>
 
 
             <div class="columnContainerChild">
                 <h2>DONE</h2>
-                <div class="column" id="done" ondragover="allowDrop(event), highlight('done')" ondragleave="removeHighlight('done')" ondrop="moveTo('done')"></div>
+                <div class="column" id="done" ondragover="allowDrop(event), highlight('done')" ondragleave="removeHighlight('done')" ondrop="moveTo('done'), removeHighlight('done')"></div>
             </div>
         </div>
         <!------------------------------------------>

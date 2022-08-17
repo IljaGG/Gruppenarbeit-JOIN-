@@ -1,19 +1,5 @@
-let users = [];
 let newUser = [];
 let loggedIn = true;
-
-
-
-// setURL('https://gruppe-292-join.developerakademie.net/smallest_backend_ever');
-
-
-async function init() {
-    await downloadFromServer();
-    users = JSON.parse(backend.getItem(`${users}`)) || [];
-    backend.setItem('Test', 'Hallo')
-
-    console.log(users);
-}
 
 
 function getId(theId) {
@@ -43,7 +29,7 @@ function getRegistrated() {
             'email': email
         }];
         saveInLocalStorage(newUser);
-        window.location.href = './addTask.html';
+        window.location.href = './board.html';
     }
 
     if (loggedUser[0].user === actualUser && loggedUser[0].password === password && loggedUser[0].email === email) {
@@ -86,7 +72,7 @@ function checkIfUserIsLoggedIn() {
         window.location.href = './index.html'
         // localStorage.setItem('loggedInKey', `${loggedIn}`);
     } else {
-        window.location.href = './addTask.html'
+        window.location.href = './board.html'
     }
 }
 
@@ -96,6 +82,6 @@ function guestLogin() {
         localStorage.setItem('loggedInKey', `${loggedIn}`)
     }
 
-    window.location.href = './addTask.html';
+    window.location.href = './board.html';
 }
 

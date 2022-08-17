@@ -1,29 +1,11 @@
 let selectedUser = [];
 let allTasks = [];
-
-setURL('https://gruppe-292-join.developerakademie.net/smallest_backend_ever');
-
-
-async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]');    //////// Greift bzw. fragt nach allen Elemente mit "w3-include-html".  //////// 
-    for (let i = 0; i < includeElements.length; i++) {           //////// Standar for-schleife ////////      
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html");  //////// templatesHTML/header.html //////// 
-        let response = await fetch(file);
-        if (response.ok) {
-            element.innerHTML = await response.text();        //////// Abfrage ob Datei gefunden wurde oder nicht. //////// 
-        } else {
-            element.innerHTML = 'Page not found';
-        }
-    }
-}
-
+let inicialTaskID = 1;
 
 async function init() {
     await downloadFromServer();
-    allTasks = backend.getItem('tasks') || [];
+    allTasks = await backend.getItem('tasks') || [];
 }
-
 
 /**
  * This function is used to select the "assigned to"-User. More than one user can be selected
@@ -65,6 +47,7 @@ function addTask(taskStatus) {
     [title, category, description, dueDate,
         createdDate, urgency, assignedTo] = getValuesForTasks();
     let task = {
+        'id': getNextId(),
         'title': title.value,
         'category': category.value,
         'status': taskStatus,
@@ -76,6 +59,29 @@ function addTask(taskStatus) {
     };
     allTasks.push(task);
     backend.setItem('tasks', allTasks)
+}
+
+/**
+ * This function is used return the ID for the next task for the array
+ */
+function getNextId(){
+    if (allTasks.length === 0) {
+        return inicialTaskID;
+    } else if (getLastID() === 0) {
+        return inicialTaskID++
+    } else {
+        let lastTaskID = getLastID()
+        return lastTaskID
+    }
+}
+
+/**
+ * This function is used return the ID of the last element in the array
+ */
+function getLastID(){
+    let lastTaskID = allTasks[allTasks.length - 1]['id'];
+    lastTaskID++
+    return lastTaskID
 }
 
 /**
@@ -137,3 +143,12 @@ function overlay(id) {
         container.style.display = 'flex'
     }
 }
+
+/**
+ * This function is used to redirect the user to a certain url 
+ * @param {string} url -- relative URL where the page is located
+ */
+function redirection(url){
+    location.href = url
+}
+

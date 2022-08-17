@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +11,12 @@
     <link rel="stylesheet" href="css/addTask.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="/css/login.css">
+    <script src="js/includeHTML.js"></script>
     <script src="js/mini_backend.js"></script>
     <script src="js/addTask.js"></script>
-    <script src="js/main.js"></script>
 </head>
 
 <body onload="includeHTML(), init()">
-
     <div id="overlayUser" class="containerOverlay" style="display: none">
         <div class="contentOverlay">
             <p>Please assign the task to at least one user</p>
@@ -42,9 +40,9 @@
         <div class="contentOverlay">
             <p class="taskDone">Task done!</p>
             <div class="overlayItems">
-                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Go to
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields(), redirection('/backlog.html')" class="createTaskButton">Go to
                     Backlog</button>
-                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Go to
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields(), redirection('/board.html')" class="createTaskButton">Go to
                     To Dos</button>
                 <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Create
                     a new Task</button>
