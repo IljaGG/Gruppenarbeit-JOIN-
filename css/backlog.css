@@ -75,7 +75,7 @@ main {
 }
 
 .Marketing {
-    background-color: orange;
+    background-color: #EA9045;
     width: 5px;
     height: 40px;
     border-top-left-radius: 10px;
@@ -83,7 +83,7 @@ main {
 }
 
 .Product {
-    background-color: purple;
+    background-color: #0E8179;
     width: 5px;
     height: 40px;
     border-top-left-radius: 10px;
@@ -91,7 +91,7 @@ main {
 }
 
 .Sale {
-    background-color: green;
+    background-color: #6A39AB;
     width: 5px;
     height: 40px;
     border-top-left-radius: 10px;

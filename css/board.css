@@ -29,8 +29,12 @@ main {
 
 
 .column {
-    height: 75%;
-    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 75%;
+    background-color: #F5F7F8;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2)
 }
 
 
@@ -52,4 +56,94 @@ main {
 
 .highlight {
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+.taskContainer {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 85%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.assignedTo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.assignedTo img, .calendar img {
+    width: 20px;
+    height: 20px;
+}
+
+.calendar{
+    display: flex;
+    align-items: center;
+}
+
+.marginTop {
+    margin-top: 10px;
+}
+
+.marginRight{
+    margin-right: 5px;
+}
+
+.priority{
+    display: inline-block;
+    padding: 8px 15px 8px 15px;
+    border-radius: 15px;
+    color: white;
+}
+
+.spaceBetween{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.taskID{
+    font-size: 1.1rem;
+    font-weight: 600;   
+}
+
+.dueDate{
+    color: #03037F;
+}
+
+.Low{
+    background-color: #B7BB2C;
+}
+
+.Medium{
+    background-color: #EF8F1C;
+}
+
+.High{
+    background-color: #C6212A;
+}
+
+.assignedToImgContainer {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 100%;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+
+.assignedToImgContainer p {
+    font-weight: bold;
 }
