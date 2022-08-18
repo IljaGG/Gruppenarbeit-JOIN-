@@ -18,6 +18,20 @@ nav img {
 
 .containerWithSections {
     margin-top: 60px;
+    width: 100%;
+}
+
+
+.containerWithSections div {
+    margin-top: 15px;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+
+.containerWithSections div:hover{
+    border-left: 5px solid white;  
+    transition: border-left 100ms ease-in-out;
 }
 
 
@@ -26,8 +40,7 @@ a {
     color: white;
 }
 
-
-a:hover {
-    cursor: pointer;
-    /****** Hovereffekt mit Border-left noch nachtragen. ******/
+.activeLink{
+    border-left: 5px solid white;    
 }
+
