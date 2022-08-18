@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN</title>
+    <link rel="shortcut icon" href="icons/logo.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body class="slide-in-right ">
+
+    <div class="logo">
+        <img src="/img/joinlogo.png" onclick="backToLogin()">
+    </div>
+
+    <div class="loginContainer ">
+
+        <div class="arrow"><img src="/img/left-arrow.png"></div>
+
+        <div class="loginBox deleteMs">
+            <h1>Sign In</h1>
+        </div>
+
+        <form class="loginSection" onsubmit="return false">
+            <input required type="text" class="inputFields msBottom" id="userName" minlength="5" placeholder="Username"
+                name="uname">
+
+            <input required class="inputFields" type="email" id="email" minlength="3" placeholder="Enter Email"
+                name="email">
+
+            <input required type="password" class="inputFields distance" id="password" minlength="5"
+                placeholder="Password" name="psw">
+
+            <div class="btnBox">
+                <button class="btn" id="fullRegister" type="submit" required
+                    onclick="getRegistrated()">Register</button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div id="errorMessage"></div>
+
+</body>
+
+</html>

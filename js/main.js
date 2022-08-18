@@ -18,6 +18,7 @@ function login() {
 
 }
 
+
 /**
  * This function is used for checking or setting the registration
  */
@@ -48,8 +49,9 @@ function getRegistrated() {
 
 }
 
+
 /**
- * This function returns an html part wich is used for an error message
+ * This function returns an html part which is used for an error message
  * @returns html part
  */
 function createErrorBox() {
@@ -57,6 +59,7 @@ function createErrorBox() {
     <div class = "errorBox"><span><b>This User already exists</b></span></div>
 `
 }
+
 
 /**
  * This function is for setting an User in Local Storage and as soon as possible in the backend
@@ -67,28 +70,39 @@ function saveInLocalStorage(newUser) {
     localStorage.setItem('newUser', newUser);
 }
 
+
 /**
- * shows the html part for the Registration Section
+ * This function redirects to register.html
  */
-function showRegistrateSection() {
-    let registration = getId('registrate');
-    getId('loginBtn').style = 'display: none';
-    getId('registerBtn').style = 'display: none';
-    registration.innerHTML = '';
-    registration.innerHTML += /*html*/ `
-        <input required type="email" id="email" minlength="3" placeholder="Enter Email" name="email">
-        <button class="btn" id="registerBtn" type="submit" required onclick="getRegistrated()">Register</button>
-    `
+function signUp() {
+    window.location.href = './register.html';
 }
+
+/**
+ * This function goes back to index.html
+ */
+function backToLogin() {
+    console.log('hallo');
+    getId('logo').classList.remove('slide-out-bck-tl');
+    getId('loginContainer').classList.remove('slide-in-bottom');
+    getId('loginBody').classList.add('slide-in-left');
+    window.location.href = './index.html';
+}
+
 
 /**
  * This function is for checking if the User is logged In or not so that he can´t evade the Login Section
  */
 function checkIfUserIsLoggedIn() {
-    if (localStorage.getItem("loggedInKey") === null) {
-        window.location.href = './index.html'
-    }
+    if (window.location.href.indexOf("index.html") >= 0) {
+        console.log('hallo');
+    } // todo
+    // if (localStorage.getItem("loggedInKey") === null) {
+    //     window.location.href = './index.html'
+    // }
+
 }
+
 
 /**
  * A simple Guest Login
@@ -97,6 +111,7 @@ function guestLogin() {
     setDefault();
     window.location.href = './board.html';
 }
+
 
 /**
  * This function is for setting an default variable to the local storage

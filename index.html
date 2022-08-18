@@ -8,46 +8,55 @@
     <title>JOIN</title>
     <link rel="shortcut icon" href="icons/logo.png">
     <link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
-<!-- <body onload="checkIfUserIsLoggedIn()"> -->
-<div class="loginContainer">
+<body onload="checkIfUserIsLoggedIn()" class="loginBody">
 
-    <div class="loginSection">
+    <div class="logo slide-out-bck-tl" id="logo">
+        <img src="/img/joinlogo.png">
+    </div>
 
-        <div class="loginLeftside">
-            <img src="./img/joinlogo.png" alt="joinlogo">
+    <div class="loginContainer slide-in-bottom" id="loginContainer">
+
+        <div class="loginBox">
+            <h1>Log In</h1>
         </div>
 
-        <form class="rightSide" id="rightSide" onsubmit="return false">
-
-            <h1 class="flex-center">Login</h1>
+        <form class="loginSection" onsubmit="return false">
+            <input required type="text" class="inputFields" id="userName" minlength="5" placeholder="Username"
+                name="uname">
 
             <div id="errorMessage"></div>
 
-            <div class="flex-column">
-                <input required type="text" id="userName" minlength="5" placeholder="Enter Username" name="uname">
 
-                <input required type="password" id="password" minlength="5" placeholder="Enter Password" name="psw">
+            <input required type="password" class="inputFields" id="password" minlength="5" placeholder="Password"
+                name="psw">
 
+            <span id="forgot">Forgot my Password</span>
+
+            <div class="btnBox">
                 <button class="btn" id="loginBtn" type="submit" required onclick="login()">Login</button>
-                <button class="btn" id="registerBtn" type="button" required
-                    onclick="showRegistrateSection()">Register</button>
 
-                <div id="registrate" class="flex-column"></div>
-
-                <div class="flex-column guest">
-                    <button class="btn" id="guestBtn" type="button" required onclick="guestLogin()">Login
-                        as
-                        guest</button>
-                </div>
-
+                <button id="guestBtn" type="button" required onclick="guestLogin()">Guest Login</button>
             </div>
+
+
         </form>
 
+
+
     </div>
-</div>
+
+    <div class="registrate slide-in-bottom">
+        <div><span>Not a Join User ?</span></div>
+
+        <button class="btn" id="register" type="button" required onclick="signUp()">Sign Up</button>
+    </div>
+
 </body>
 
 </html>
+
+<!-- <a href="https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by Prosymbols Premium - Flaticon</a>      -->
+<!-- <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Tomas Knop - Flaticon</a> -->
