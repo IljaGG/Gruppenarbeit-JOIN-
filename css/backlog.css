@@ -84,7 +84,7 @@ main {
 .Marketing {
     background-color: #AF5784;
     width: 5px;
-    height: 40px;
+    height: 70px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -92,7 +92,7 @@ main {
 .Product {
     background-color: #0E8179;
     width: 5px;
-    height: 40px;
+    height: 70px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -100,7 +100,7 @@ main {
 .Sale {
     background-color: #6A39AB;
     width: 5px;
-    height: 40px;
+    height: 70px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
