@@ -51,7 +51,7 @@ main {
 }
 
 .backlogCard {
-    height: 70px;
+    height: 90px;
     display: flex;
     position: relative;
     justify-content: space-between;
@@ -69,11 +69,18 @@ main {
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
 }
 
-.backlogCard img{
+.trash img{
     position: absolute;
     right: 5px;
     bottom: 5px;
-    width: 15px;
+    width: 20px;
+}
+
+.send img{
+    position: absolute;
+    right: 35px;
+    bottom: 5px;
+    width: 20px;
 }
 
 .tiny-color {
@@ -84,7 +91,7 @@ main {
 .Marketing {
     background-color: #AF5784;
     width: 5px;
-    height: 70px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -92,7 +99,7 @@ main {
 .Product {
     background-color: #0E8179;
     width: 5px;
-    height: 70px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -100,7 +107,7 @@ main {
 .Sale {
     background-color: #6A39AB;
     width: 5px;
-    height: 70px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }

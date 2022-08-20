@@ -21,7 +21,9 @@ function render() {
        <div class="description-width">${backlogTask['assignedTo']}</div>
        <div class="centered">${backlogTask['category']}</div>
        <div class="description-width text-align-right">${backlogTask['description']}</div>
-       <div onclick="deleteBacklogCard(${i})"> <img src="img/trash.png"> </div>
+       <div class="trash" onclick="deleteBacklogCard(${i})"> <img src="img/trash.png" title="Delete Task"> </div>
+       <div class="send" onclick=""> <img src="img/send.png" title="Send to Board"> </div>
+       
     </div>
     `
     }
