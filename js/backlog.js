@@ -21,10 +21,21 @@ function render() {
        <div class="description-width">${backlogTask['assignedTo']}</div>
        <div class="centered">${backlogTask['category']}</div>
        <div class="description-width text-align-right">${backlogTask['description']}</div>
-       <div> <img src="img/trash.png"> </div>
+       <div onclick="deleteBacklogCard(${i})"> <img src="img/trash.png"> </div>
     </div>
     `
     }
+}
+
+/**
+ * This function is used to delete the current backlogcard
+ *  * @param {string} i -- makes sure, the current card is deleted
+ */
+
+function deleteBacklogCard(i) {
+    allTasks.splice(i, 1);
+    backend.setItem('tasks', allTasks);
+    render();
 }
 
 
