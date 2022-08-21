@@ -7,6 +7,7 @@ async function init() {
     allTasks = await backend.getItem('tasks') || [];
 }
 
+
 /**
  * This function is used to select the "assigned to"-User. More than one user can be selected
  * @param {string} pickedUser -- the ID of the current User is used to push them into the currentUser-Array
@@ -47,7 +48,8 @@ function addTask(taskStatus) {
     [title, category, description, dueDate,
         createdDate, urgency, assignedTo] = getValuesForTasks();
     let task = {
-        'id': getNextId(),
+        'taskId': getNextId(),
+        'dragAndDropId': '',
         'title': title.value,
         'category': category.value,
         'status': taskStatus,
@@ -79,7 +81,7 @@ function getNextId(){
  * This function is used return the ID of the last element in the array
  */
 function getLastID(){
-    let lastTaskID = allTasks[allTasks.length - 1]['id'];
+    let lastTaskID = allTasks[allTasks.length - 1]['taskId'];
     lastTaskID++
     return lastTaskID
 }

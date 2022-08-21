@@ -3,7 +3,19 @@ let currentDraggedElement;
 async function init() {
     await downloadFromServer();
     allTasks = await backend.getItem('tasks') || [];
+    await setDragAndDropId();
     updateHTML();
+}
+
+/**
+ * This function is used to set the id of every task dynamically
+ * This is important if any task is deleted because the drag and drop depends of the length of the array
+ * If a task is deleted, the id starts counting from zero
+ */
+ function setDragAndDropId(){
+    for (let i = 0; i < allTasks.length; i++) {
+        allTasks[i]['dragAndDropId'] = i;
+    }
 }
 
 /**
@@ -26,12 +38,10 @@ function updateContainer(container) {
     document.getElementById(container).innerHTML = ``;
     for (let i = 0; i < filteredTask.length; i++) {
         let task = filteredTask[i];
-        //because of the zero-based index, 1 has to be subtracted
-        let id = filteredTask[i]['id'] - 1;
         let date = filteredTask[i]['dueDate'];
         //change the unix timestamp to en-US-timestamp
         let formattedDate = new Date(date).toLocaleDateString('en-US')
-        document.getElementById(container).innerHTML += HTMLTemplateTasks(i, task, id, formattedDate, filteredTask)
+        document.getElementById(container).innerHTML += HTMLTemplateTasks(i, task, formattedDate, filteredTask)
     }
 }
 
@@ -67,17 +77,16 @@ function removeHighlight(category) {
  * This function returns the content for the container
  * @param {number} i -- the number of the current element in the for-loop is used for the index of the filterd array 
  * @param {string} task -- current task of the array
- * @param {string} id -- ID-1 for drag and drop --> doesn´t work with i because this changes after dragging and dropping (filtered array changes)
  * @param {string} formattedDate
  * @param {string} filteredTask -- filtered Array (in total 4 different status)
  * @returns {string} --HTML content
  */
-function HTMLTemplateTasks(i, task, id, formattedDate, filteredTask) {
+function HTMLTemplateTasks(i, task, formattedDate, filteredTask) {
     return /*html*/ `
-            <div class="taskContainer" style="${styleBorderTop(task['category'])}" draggable="true" ondragstart="startDragging(${id})">
+            <div class="taskContainer" style="${styleBorderTop(task['category'])}" draggable="true" ondragstart="startDragging(${task['dragAndDropId']})">
                 <div class="spaceBetween">
                     <div>
-                        <div class="taskID">Task ${task['id']}</div>
+                        <div class="taskID">Task ${task['taskId']}</div>
                         <div class="priority marginTop ${task['urgency']}">${task['urgency']}</div>
                     </div>
                     <div class="calendar marginTop">

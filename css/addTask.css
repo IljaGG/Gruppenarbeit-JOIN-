@@ -195,7 +195,7 @@ textarea {
     justify-content: center;
     flex-direction: column;
     width: 500px;
-    height: 150px;
+    min-height: 150px;
     padding: 20px;
     background-color: lightgray;
     border-radius: 3px;
