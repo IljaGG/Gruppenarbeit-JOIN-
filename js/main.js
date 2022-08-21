@@ -82,10 +82,6 @@ function signUp() {
  * This function goes back to index.html
  */
 function backToLogin() {
-    console.log('hallo');
-    getId('logo').classList.remove('slide-out-bck-tl');
-    getId('loginContainer').classList.remove('slide-in-bottom');
-    getId('loginBody').classList.add('slide-in-left');
     window.location.href = './index.html';
 }
 
@@ -94,12 +90,12 @@ function backToLogin() {
  * This function is for checking if the User is logged In or not so that he can´t evade the Login Section
  */
 function checkIfUserIsLoggedIn() {
-    if (window.location.href.indexOf("index.html") >= 0) {
-        console.log('hallo');
-    } // todo
-    // if (localStorage.getItem("loggedInKey") === null) {
-    //     window.location.href = './index.html'
-    // }
+
+    if (!window.location.href.endsWith('index.html')) {
+        if (localStorage.getItem("loggedInKey") === null) {
+            window.location.href = './index.html'
+        }
+    }
 
 }
 
