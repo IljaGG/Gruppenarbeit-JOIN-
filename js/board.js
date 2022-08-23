@@ -89,6 +89,19 @@ function HTMLTemplateTasks(i, task, formattedDate, filteredTask) {
                         <div class="taskID">Task ${task['taskId']}</div>
                         <div class="priority marginTop ${task['urgency']}">${task['urgency']}</div>
                     </div>
+                    <div class="toogleDescription" id="toggle${task['dragAndDropId']}"> 
+                        <div id="description${task['dragAndDropId']}" class="singleDescription" contenteditable="true">
+                            ${task['description']}
+                        </div>
+                        <div class="task-icons description">
+                            <span onclick="closeDescription(${task['dragAndDropId']})" class="material-icons close">
+                                close
+                            </span>
+                            <span onclick="overwriteDescription(${task['dragAndDropId']})"  class="material-icons done">
+                                done
+                            </span>  
+                        </div>
+                    </div>
                     <div class="calendar marginTop">
                         <img class="marginRight" src="./img/calendar.png" alt="calendar">
                         <div>
@@ -96,8 +109,16 @@ function HTMLTemplateTasks(i, task, formattedDate, filteredTask) {
                         </div>
                     </div>
                 </div>
-                <div id="assignedUser" class="assignedTo">
-                    ${HTMLTemplateAssigendTo(filteredTask, i)}
+                <div class="spaceBetween end">
+                    <div id="assignedUser" class="assignedTo">
+                        ${HTMLTemplateAssigendTo(filteredTask, i)}
+                    </div>
+                    <div class="task-icons">
+                        <span onclick="toggleSlide(${task['dragAndDropId']})"  id="note" class="material-symbols-outlined">
+                            description
+                        </span>
+                        <img onclick="deleteBacklogCard(${task['dragAndDropId']})" class="trash" src="./img/trash.png" alt="Trash">
+                    </div>
                 </div>
             </div>
     `;
@@ -137,4 +158,51 @@ function styleBorderTop(category){
     } else {
         return `border-top: 4px solid black;`
     }
+}
+
+/**
+ * This function is used to delete a task from the board
+ *  * @param {string} id -- makes sure the selected card is deleted
+ */
+ function deleteBacklogCard(id) {
+    allTasks.splice(id, 1);
+    backend.setItem('tasks', allTasks);
+    setDragAndDropId();
+    updateHTML();
+}
+
+/**
+ * This function is used to toogle the slidebar of the task description
+ *  * @param {string} id -- id of the div-element from a task
+ */
+function toggleSlide(id) {
+    let div = document.getElementById('toggle' + id)
+    if (div.classList.contains('open')) {
+      div.classList.remove('open')
+    } else {
+      div.classList.add('open')
+    }
+  }
+
+/**
+ * This function is used to close the dialog of the description and reset the values
+ *  * @param {string} id -- id of the current element
+ */
+function closeDescription(id) {
+    let oldDescription = allTasks[id]['description'];
+    let container = document.getElementById('description' + id);
+    container.innerHTML = oldDescription;
+    //close the dialog
+    toggleSlide(id);
+}
+
+/**
+ * This function is used to update the description of a task 
+ *  * @param {string} id -- id of the current element
+ */
+function overwriteDescription(id) {
+    let container = document.getElementById('description' + id);
+    allTasks[id]['description'] = container.innerHTML;
+    backend.setItem('tasks', allTasks);
+    updateHTML();
 }

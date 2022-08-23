@@ -68,7 +68,6 @@ main {
     padding: 10px;
     width: 85%;
     margin: 10px;
-    cursor: pointer;
 }
 
 .assignedTo {
@@ -146,4 +145,84 @@ main {
 
 .assignedToImgContainer p {
     font-weight: bold;
+}
+
+.trash {
+    width: 20px;
+    opacity: 0.5;
+}
+
+.trash:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.end{
+    align-items: flex-end;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+#note{
+    color: #03037F;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+}
+
+#note:hover{
+    opacity: 1;
+}
+
+.task-icons{
+    display: flex;
+    align-items: center;
+}
+
+.toogleDescription{
+    word-break: break-all;
+    visibility: hidden;
+    transition: visibility .3s, max-height .5s;
+    max-height: 0;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.toogleDescription.open {
+    visibility: visible;
+    /* Set max-height to something bigger than the box could ever be */
+    max-height: 1000px;
+  }
+
+.close{
+    color: red;
+    opacity: 0.5;
+}
+
+.done{
+    color: green;
+    opacity: 0.5;
+}
+
+.close:hover, .done:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+
+.task-icons.description{
+    justify-content: flex-end !important;
+}
+
+.singleDescription{
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 5px;
 }
