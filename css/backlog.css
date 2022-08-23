@@ -60,13 +60,7 @@ main {
     background-color: #f4f4fb;
     margin-bottom: 10px;
     border-radius: 10px;
-    cursor: pointer;
     transition: all 100ms ease-in-out;
-}
-
-.backlogCard:hover{
-    transform: scale(1.02);
-    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
 }
 
 .trash img{
@@ -74,6 +68,7 @@ main {
     right: 5px;
     bottom: 5px;
     width: 20px;
+    opacity: 0.5;
 }
 
 .send img{
@@ -81,6 +76,12 @@ main {
     right: 35px;
     bottom: 5px;
     width: 20px;
+    opacity: 0.5;
+}
+
+.trash img:hover, .send img:hover{
+    opacity: 1;
+    cursor: pointer;
 }
 
 .tiny-color {
