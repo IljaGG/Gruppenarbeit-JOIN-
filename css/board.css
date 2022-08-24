@@ -226,3 +226,7 @@ main {
     border-radius: 7px;
     padding: 5px;
 }
+
+.objectFit{
+    object-fit: cover;
+}

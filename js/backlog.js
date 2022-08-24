@@ -32,15 +32,32 @@ function render() {
         backlogTasks.innerHTML += `
     <div class="backlogCard">
        <div id="tiny-color" class="${backlogTask['category']}"></div>
-       <div class="description-width">${backlogTask['assignedTo']}</div>
-       <div class="centered">${backlogTask['category']}</div>
-       <div class="description-width text-align-right">${backlogTask['description']}</div>
+       <div class="assignedToImgContainerMain noPadding max-width">
+        <div>${HTMLTemplateAssigendTo(i, filteredTask)}</div>
+       </div>
+       <div class="centered max-width">${backlogTask['category']}</div>
+       <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
        <div class="trash" onclick="deleteBacklogCard(${id})"> <img src="img/trash.png" title="Delete Task"> </div>
        <div class="send" onclick="addToDos(${id})"> <img src="img/send.png" title="Send to Board"> </div>
-       
     </div>
     `
     }
+}
+
+/**
+ * This function returns the content for the assigned user. Because one than more user can be assigend to a task, a inner loop is needed
+ * @param {number} filteredTask -- the number of the current element in the for-loop of the FILTERD array
+ * @returns {string} --HTML content
+ */
+ function HTMLTemplateAssigendTo(i, filteredTask){
+    let content = '';
+    for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
+        let user = filteredTask[i]['assignedTo'][j];
+        content += /*html*/ ` 
+            <img class="assignedToImgContainer objectFit backlogStyle" src="./img/${user}" alt="">
+        `
+    }
+    return content
 }
 
 /**

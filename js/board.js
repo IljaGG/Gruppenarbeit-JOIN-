@@ -110,7 +110,7 @@ function HTMLTemplateTasks(i, task, formattedDate, filteredTask) {
                     </div>
                 </div>
                 <div class="spaceBetween end">
-                    <div id="assignedUser" class="assignedTo">
+                    <div id="assignedUser" class="assignedToImgContainerMain noPadding">
                         ${HTMLTemplateAssigendTo(filteredTask, i)}
                     </div>
                     <div class="task-icons">
@@ -135,9 +135,7 @@ function HTMLTemplateAssigendTo(filteredTask, i){
     for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
         let user = filteredTask[i]['assignedTo'][j];
         content += /*html*/ `
-        <div class="assignedToImgContainer">
-            <p>${user}</p>
-        </div>
+        <img class="assignedToImgContainer objectFit backlogStyle noPadding" src="./img/${user}" alt="">
         `
     }
     return content

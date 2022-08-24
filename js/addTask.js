@@ -1,6 +1,7 @@
 let selectedUser = [];
 let allTasks = [];
 let inicialTaskID = 1;
+let users = ['TP.png', 'IG.png', 'VW.png', 'RD.png'];
 
 async function init() {
     await downloadFromServer();
@@ -10,17 +11,17 @@ async function init() {
 
 /**
  * This function is used to select the "assigned to"-User. More than one user can be selected
- * @param {string} pickedUser -- the ID of the current User is used to push them into the currentUser-Array
+ * @param {string} i -- the ID of the current User is used to push them into the currentUser-Array
  */
-function selectUser(pickedUser) {
-    let user = document.getElementById(pickedUser);
+function selectUser(i) {
+    let user = document.getElementById('user-' + i);
     user.classList.toggle('avatar-selected');
-    if (selectedUser.includes(pickedUser)) {
+    if (selectedUser.includes(users[i])) {
         //if a user is clicked twice it should be deleted from the array
-        selectedUser = selectedUser.filter(a => a != pickedUser);
+        selectedUser = selectedUser.filter(a => a != i);
     } else {
         //push the selected user into the array if the value isn´t available yet
-        selectedUser.push(pickedUser)
+        selectedUser.push(users[i]);
     }
 }
 
