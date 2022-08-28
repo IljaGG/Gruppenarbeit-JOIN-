@@ -12,7 +12,7 @@ async function init() {
  * This is important if any task is deleted because the drag and drop depends of the length of the array
  * If a task is deleted, the id starts counting from zero
  */
- function setDragAndDropId(){
+function setDragAndDropId() {
     for (let i = 0; i < allTasks.length; i++) {
         allTasks[i]['dragAndDropId'] = i;
     }
@@ -130,7 +130,7 @@ function HTMLTemplateTasks(i, task, formattedDate, filteredTask) {
  * @param {string} filteredTask -- filtered Array (in total 4 different status)
  * @returns {string} --HTML content
  */
-function HTMLTemplateAssigendTo(filteredTask, i){
+function HTMLTemplateAssigendTo(filteredTask, i) {
     let content = '';
     for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
         let user = filteredTask[i]['assignedTo'][j];
@@ -146,8 +146,8 @@ function HTMLTemplateAssigendTo(filteredTask, i){
  * This function styles the color of the border corresponding to the category
  * @param {string} category -- category of the task
  */
-function styleBorderTop(category){
-    if (category == 'Marketing'){
+function styleBorderTop(category) {
+    if (category == 'Marketing') {
         return `border-top: 4px solid #AF5784;`
     } else if (category == 'Product') {
         return `border-top: 4px solid #0E8179;`
@@ -162,7 +162,7 @@ function styleBorderTop(category){
  * This function is used to delete a task from the board
  *  * @param {string} id -- makes sure the selected card is deleted
  */
- function deleteBacklogCard(id) {
+function deleteBacklogCard(id) {
     allTasks.splice(id, 1);
     backend.setItem('tasks', allTasks);
     setDragAndDropId();
@@ -176,11 +176,11 @@ function styleBorderTop(category){
 function toggleSlide(id) {
     let div = document.getElementById('toggle' + id)
     if (div.classList.contains('open')) {
-      div.classList.remove('open')
+        div.classList.remove('open')
     } else {
-      div.classList.add('open')
+        div.classList.add('open')
     }
-  }
+}
 
 /**
  * This function is used to close the dialog of the description and reset the values

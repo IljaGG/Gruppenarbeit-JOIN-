@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/addTask.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="js/main.js"></script>
     <script src="js/includeHTML.js"></script>
     <script src="js/mini_backend.js"></script>
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <main id="main">
+    <main>
         <!------------------------------------------>
         <div w3-include-html="navbar/navbar.html"></div>
         <!------------------------------------------>
@@ -67,7 +67,7 @@
                 <div class="leftSplit">
                     <div class="title">
                         <h2>TITLE</h2>
-                        <input id="taskTitle" required type="text" placeholder="Titel hier einfügen...">
+                        <input id="taskTitle" required type="text" placeholder="Add Title...">
                     </div>
                     <div class="category">
                         <h2>CATEGORY</h2>
@@ -101,10 +101,14 @@
                         <h2>ASSIGNED TO</h2>
                     </div>
                     <div class="assignedToImgContainerMain">
-                            <img id="user-0" onclick="selectUser(0)" class="assignedToImgContainer objectFit" src="./img/TP.png" alt="">
-                            <img id="user-1" onclick="selectUser(1)" class="assignedToImgContainer objectFit" src="./img/IG.png" alt="">
-                            <img id="user-2" onclick="selectUser(2)" class="assignedToImgContainer objectFit" src="./img/VW.png" alt="">
-                            <img id="user-3" onclick="selectUser(3)" class="assignedToImgContainer objectFit" src="./img/RD.png" alt="">
+                        <img id="user-0" onclick="selectUser(0)" class="assignedToImgContainer objectFit"
+                            src="./img/TP.png" alt="">
+                        <img id="user-1" onclick="selectUser(1)" class="assignedToImgContainer objectFit"
+                            src="./img/IG.png" alt="">
+                        <img id="user-2" onclick="selectUser(2)" class="assignedToImgContainer objectFit"
+                            src="./img/VW.png" alt="">
+                        <img id="user-3" onclick="selectUser(3)" class="assignedToImgContainer objectFit"
+                            src="./img/RD.png" alt="">
                     </div>
                     <div class="buttonContainer">
                         <div class="cancelButton" onclick="resetInputFields()">CANCEL</div>

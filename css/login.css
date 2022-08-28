@@ -82,6 +82,11 @@ body {
     filter: invert(1);
 }
 
+#loginError {
+    display: flex;
+    justify-content: center;
+}
+
 .loginContainer {
     display: flex;
     flex-direction: column;
