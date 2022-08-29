@@ -11,8 +11,27 @@ nav {
 }
 
 
-nav img {
+.joinLogo {
     padding-top: 30px;
+}
+
+
+.responsiveMenu {
+    height: 10vh;
+    background-color: #03037f;
+    display: none;
+}
+
+
+.imgMenu {
+    display: none;
+}
+
+
+.imgMenu:hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    transform: scale(1.1);
 }
 
 
@@ -45,7 +64,7 @@ a {
 }
 
 .userImage {
-    margin-top: 300px;
+    padding-top: 260px;
 }
 
 .center {
@@ -67,4 +86,14 @@ a {
 .center button:hover {
     cursor: pointer;
     background-color: #ed2101;
+}
+
+
+.d-flex {
+    display: flex;
+}
+
+
+.d-none {
+    display: none;
 }

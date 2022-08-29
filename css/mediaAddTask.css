@@ -1,0 +1,157 @@
+@media (max-width: 1239px) {
+
+    .formularMainContainer {
+        margin-left: 250px;
+    }
+}
+
+
+@media (max-width: 1200px) {
+
+    .formularMainContainer {
+        margin-left: 200px;
+    }
+}
+
+
+@media (max-width: 1150px) {
+
+    .formularMainContainer {
+        margin-left: 150px;
+    }
+}
+
+
+@media (max-width: 1090px) {
+
+    .formularMainContainer {
+        margin-left: 100px;
+    }
+}
+
+
+@media (max-width: 1040px) {
+
+    .formularMainContainer {
+        margin-left: 50px;
+    }
+}
+
+
+@media (max-width: 1000px) {
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav {
+        display: none;
+        justify-content: center;
+        width: 100%;
+        height: 649px;
+    }
+
+    .responsiveMenu {
+        display: flex;
+    }
+
+    .userImage {
+        padding-top: 150px;
+    }
+    
+    .imgMenu {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-top: 15px;
+        position: absolute;
+        left: 20px;
+    }
+
+    .containerWithSections {
+        width: unset;
+    }
+
+    .formularMainContainer {
+        margin-left: 0;
+    }
+
+    .addTaskHeadline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        border-radius: 8px;
+        padding: 22px;
+        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 685px) {
+    form {
+        border-radius: 8px;
+        padding: 22px;
+        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .title input {
+        width: 317px;
+    }
+
+    textarea {
+        width: 317px;
+    }
+
+    .leftSplit {
+        padding-right: 0;
+    }
+
+    .dueDate input  {
+        width: 317px;
+    }
+
+    select {
+        width: 317px;
+    }
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 350px) {
+    
+    .title input {
+        width: 280px;
+    }
+
+    textarea {
+        width: 280px;
+    }
+
+    .leftSplit {
+        padding-right: 0;
+    }
+
+    .dueDate input  {
+        width: 280px;
+    }
+
+    select {
+        width: 280px;
+    }
+
+}

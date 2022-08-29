@@ -78,3 +78,20 @@ function addToDos(i) {
     backend.setItem('tasks', allTasks);
     render();
 }
+
+
+/**
+ * This function is used to show and hide the responsive Navbar.
+ *  
+ */
+ function openMenu() {
+    let navbar = document.getElementById('navbar');
+    let columnContainer = document.getElementById('columnContainer');
+    let imgMenu = document.getElementById('imgMenu');
+
+    imgMenu.addEventListener('click', () => {
+        navbar.classList.toggle('d-flex');
+        backlogMainContainer.classList.toggle('d-none');
+    });
+}
+

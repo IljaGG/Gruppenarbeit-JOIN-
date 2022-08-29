@@ -204,3 +204,19 @@ function overwriteDescription(id) {
     backend.setItem('tasks', allTasks);
     updateHTML();
 }
+
+
+/**
+ * This function is used to show and hide the responsive Navbar.
+ *  
+ */
+ function openMenu() {
+    let navbar = document.getElementById('navbar');
+    let columnContainer = document.getElementById('columnContainer');
+    let imgMenu = document.getElementById('imgMenu');
+
+    imgMenu.addEventListener('click', () => {
+        navbar.classList.toggle('d-flex');
+        columnContainer.classList.toggle('d-none');
+    });
+}
