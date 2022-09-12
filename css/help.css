@@ -14,9 +14,9 @@ a {
 }
 
 .helpContainer {
-    height: auto;
-    margin: 20px;
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    height: 700px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 20%);
     border-radius: 10px;
     overflow-y: auto;
 }
