@@ -35,6 +35,7 @@ main {
     color: #3a3ab6;
 }
 .backlogWrapper {
+    position: relative;
     width: 70vw;
 }
 
@@ -48,6 +49,19 @@ main {
 
 .backlogTasks {
     display: flex;
+}
+
+.backlogInfo {
+    background-color: #f4f4fb;
+}
+
+.d-none {
+    display: none;
+}
+
+.backlogInfo form {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .backlogCard {

@@ -57,7 +57,7 @@ function allowDrop(ev) {     // Verändert das Standarverhalten des Elements. Es
 
 
 function moveTo(status) {   // Sorgt dafür, dass das Element Draggable wird, indem die entsprechende category zugewiesen wird.
-    allTasks[currentDraggedElement]['status'] = status
+    allTasks[currentDraggedElement]['status'] = status;
     backend.setItem('tasks', allTasks);
     updateHTML();
 }

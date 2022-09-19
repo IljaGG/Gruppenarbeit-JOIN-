@@ -11,26 +11,28 @@ async function init() {
  * This is important if any task is deleted because the drag and drop depends of the length of the array
  * If a task is deleted, the id starts counting from zero
  */
-function setDragAndDropId(){
+function setDragAndDropId() {
     for (let i = 0; i < allTasks.length; i++) {
         allTasks[i]['dragAndDropId'] = i;
     }
 }
 
+
 /**
  * This function is used to pull all backlog-tasks from the array allTasks into backlogcards.
  */
 function render() {
+    backlogInfo = document.getElementById('backlogCardInfo');
     backlogTasks = document.getElementById('backlogTasks');
     backlogTasks.innerHTML = '';
     let filteredTask = allTasks.filter(t => t['status'] == 'backlog');
-    
+
     for (let i = 0; i < filteredTask.length; i++) {
         let backlogTask = filteredTask[i];
         let id = filteredTask[i]['dragAndDropId'];
-        
+
         backlogTasks.innerHTML += `
-    <div class="backlogCard">
+    <div class="backlogCard" onclick="showInfo(${i})">
        <div id="tiny-color" class="${backlogTask['category']}"></div>
        <div class="assignedToImgContainerMain noPadding max-width">
         <div>${HTMLTemplateAssigendTo(i, filteredTask)}</div>
@@ -44,12 +46,84 @@ function render() {
     }
 }
 
+
+function showInfo(i) {
+    let filteredTask = allTasks.filter(t => t['status'] == 'backlog');
+    backlogInfo = document.getElementById('backlogCardInfo');
+    headlines = document.getElementById('headlines');
+    backlogTasks = document.getElementById('backlogTasks');
+    backlogInfo.classList.remove('d-none');
+    headlines.classList.add('d-none');
+    backlogTasks.classList.add('d-none');
+    backlogInfo.innerHTML = `${returnBacklogInfoHTML(filteredTask, i)}`;
+}
+
+
+function closeInfo() {
+    backlogInfo = document.getElementById('backlogCardInfo');
+    headlines = document.getElementById('headlines');
+    backlogTasks = document.getElementById('backlogTasks');
+    backlogInfo.classList.add('d-none');
+    headlines.classList.remove('d-none');
+    backlogTasks.classList.remove('d-none');
+}
+
+
+function returnBacklogInfoHTML(filteredTask, i) {
+    return `
+    <div class="backlogInfo">
+        <form>
+            <div class="title">
+                <h2>TITLE</h2>
+                <input id="taskTitle" required="" type="text" value="${filteredTask[i]['title']}">
+            </div>
+            <div class="dueDate">
+                <h2>DUE DATE</h2>
+                <input value="${filteredTask[i]['dueDate']}" id="taskDueDate" type="text" onfocus="(this.type='date')">
+            </div> <br>
+            <div class="category">
+                <h2>CATEGORY</h2>
+                    <select id="taskCategory">
+                        <option value="" disabled selected hidden>${filteredTask[i]['category']}</option>
+                        <option>Marketing</option>
+                        <option>Product</option>
+                        <option>Sale</option>
+                    </select>
+            </div>
+            <div class="urgency">
+                <h2>URGENCY</h2>
+                <select id="taskUrgency">
+                    <option value="" disabled selected hidden>${filteredTask[i]['urgency']}</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+            </div>
+            <div class="description">
+                <h2>DESCRIPTION</h2>
+                <textarea id="taskDescription" required="" maxlength="180">${filteredTask[i]['description']}</textarea>
+            </div>
+            <div class="assignedTo">
+                <h2>ASSIGNED TO</h2>
+                <div>${HTMLTemplateAssigendTo(i, filteredTask)}
+            </div>
+            <div class="buttonContainer">  
+                <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
+                <button class="createTaskButton createTaskButton:hover" onclick="createTask() addTask('backlog')"> Save </button>
+            </div>
+        </form>
+    </div>
+    `
+}
+
+/** <div>${HTMLTemplateAssigendTo(i, filteredTask)}  */
+
 /**
  * This function returns the content for the assigned user. Because one than more user can be assigend to a task, a inner loop is needed
  * @param {number} filteredTask -- the number of the current element in the for-loop of the FILTERD array
  * @returns {string} --HTML content
  */
- function HTMLTemplateAssigendTo(i, filteredTask){
+function HTMLTemplateAssigendTo(i, filteredTask) {
     let content = '';
     for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
         let user = filteredTask[i]['assignedTo'][j];
@@ -84,7 +158,7 @@ function addToDos(i) {
  * This function is used to show and hide the responsive Navbar.
  *  
  */
- function openMenu() {
+function openMenu() {
     let navbar = document.getElementById('navbar');
     let columnContainer = document.getElementById('columnContainer');
     let imgMenu = document.getElementById('imgMenu');
