@@ -47,7 +47,10 @@ function render() {
     }
 }
 
-
+/**
+ * This function filters the status 'backlog' and displays all informations from a backlogcard in an overlayed window
+ * @param {number} i 
+ */
 function showInfo(i) {
     let filteredTask = allTasks.filter(t => t['status'] == 'backlog');
     backlogInfo = document.getElementById('backlogCardInfo');
@@ -59,65 +62,47 @@ function showInfo(i) {
     backlogInfo.innerHTML = `${returnBacklogInfoHTML(filteredTask, i)}`;
 }
 
-
-function closeInfo() {
+/**
+ * This function closes backlogcards info-window
+ */
+async function closeInfo() {
     backlogInfo = document.getElementById('backlogCardInfo');
     headlines = document.getElementById('headlines');
     backlogTasks = document.getElementById('backlogTasks');
     backlogInfo.classList.add('d-none');
     headlines.classList.remove('d-none');
     backlogTasks.classList.remove('d-none');
+    await backend.setItem('tasks', allTasks);
+    window.location.href = 'backlog.html';
 }
 
-
+/**
+ * This function returns HTMl into the showInfo function
+ * @param {string} filteredTask -- filters for status 'backlog'
+ * @param {number} i 
+ * @returns HTML content
+ */
 function returnBacklogInfoHTML(filteredTask, i) {
-    return `
-    <div class="backlogInfo">
+    return `<div class="backlogInfo">
         <form onsubmit="updateBacklogCard(${i}); return false">
-            <div class="title">
-                <h2>TITLE</h2>
-                <input id="backlogTaskTitle" type="text" value="${filteredTask[i]['title']}">
-            </div>
-            <div class="dueDate">
-                <h2>DUE DATE</h2>
-                <input value="${filteredTask[i]['dueDate']}" id="backlogTaskDueDate" type="text" onfocus="(this.type='date')">
-            </div> <br>
-            <div class="category">
-                <h2>CATEGORY</h2>
-                    <select id="backlogTaskCategory">
-                        <option value="" disabled selected hidden>${filteredTask[i]['category']}</option>
-                        <option>Marketing</option>
-                        <option>Product</option>
-                        <option>Sale</option>
-                    </select>
-            </div>
-            <div class="urgency">
-                <h2>URGENCY</h2>
-                <select id="backlogTaskUrgency">
-                    <option value="" disabled selected hidden>${filteredTask[i]['urgency']}</option>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                </select>
-            </div>
-            <div class="description">
-                <h2>DESCRIPTION</h2>
-                <textarea id="backlogTaskDescription" required="" maxlength="180">${filteredTask[i]['description']}</textarea>
-            </div>
-            <div class="assignedTo">
-                <h2>ASSIGNED TO</h2>
-                <div>${HTMLTemplateAssigendTo(i, filteredTask)}
-            </div>
+        ${returnTitleHTML(filteredTask, i)}
+        ${returnDueDateHTML(filteredTask, i)}
+        ${returnCategoryHTML(filteredTask, i)}   
+        ${returnUrgencyHTML(filteredTask, i)}   
+        ${returnDescriptionHTML(filteredTask, i)}   
+        ${returnAssignedToHTML(filteredTask, i)}   
             <div class="buttonContainerBacklog">  
                 <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
                 <button class="createTaskButton createTaskButton:hover"> Save </button>
             </div>
         </form>
-    </div>
-    `
+    </div>`
 }
 
-
+/**
+ * This function updates the BacklogCard changes
+ * @param {number} i -- the number of the current element in the for-loop of the FILTERD array
+ */
 async function updateBacklogCard(i) {
     allTasks[i]['title'] = document.getElementById('backlogTaskTitle').value;
     allTasks[i]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
@@ -127,38 +112,6 @@ async function updateBacklogCard(i) {
     setDragAndDropId();
     await backend.setItem('tasks', allTasks);
     window.location.href = 'backlog.html';
-}
-
-
-function getValuesForBacklogTasks() {
-    let title = document.getElementById('backlogTaskTitle');
-    let category = document.getElementById('backlogTaskCategory');
-    let description = document.getElementById('taskDescription');
-    let dueDate = document.getElementById('backlogTaskDueDate');
-    let createdDate = new Date().getTime(); //only text-format could be safed in storage --> change object to getTime (UnixTimestamp since 01.01.1970)
-    let urgency = document.getElementById('backlogTaskUrgency');
-    let assignedTo = selectedUser;
-    return [title, category, description, dueDate, createdDate, urgency, assignedTo]
-}
-
-
-function updateBacklogTask(taskStatus) {
-    [title, category, description, dueDate,
-        createdDate, urgency, assignedTo] = getValuesForBacklogTasks();
-    let task = {
-        'taskId': getNextId(),
-        'dragAndDropId': '',
-        'title': title.value,
-        'category': category.value,
-        'status': taskStatus,
-        'description': description.value,
-        'dueDate': dueDate.value,
-        'createdDate': createdDate,
-        'urgency': urgency.value,
-        'assignedTo': assignedTo,
-    };
-    allTasks.push(task);
-    backend.setItem('tasks', allTasks)
 }
 
 
@@ -190,7 +143,10 @@ function deleteBacklogCard(i) {
     render();
 }
 
-
+/**
+ * This function sends the backlogcard to the board
+ * @param {number} i 
+ */
 function addToDos(i) {
     allTasks[i]['status'] = 'toDo';
     backend.setItem('tasks', allTasks);
@@ -211,5 +167,109 @@ function openMenu() {
         navbar.classList.toggle('d-flex');
         backlogMainContainer.classList.toggle('d-none');
     });
+}
+
+
+/**
+ * This function returns HTML-content
+ * @param {string} filteredTask 
+ * @param {number} i 
+ * @returns HTML content
+ */
+function returnTitleHTML(filteredTask, i) {
+    return `
+    <div class="title">
+        <h2>TITLE</h2>
+        <input id="backlogTaskTitle" type="text" value="${filteredTask[i]['title']}">
+    </div>
+    `
+}
+
+
+/**
+ * This function returns HTML-content
+ * @param {string} filteredTask 
+ * @param {number} i 
+ * @returns HTML content
+ */
+function returnDueDateHTML(filteredTask, i) {
+    return`
+         <div class="dueDate">
+            <h2>DUE DATE</h2>
+            <input value="${filteredTask[i]['dueDate']}" id="backlogTaskDueDate" type="text" onfocus="(this.type='date')">
+        </div> <br>`
+}
+
+
+/**
+ * This function returns HTML-content
+ * @param {string} filteredTask 
+ * @param {number} i 
+ * @returns HTML content
+ */
+function returnCategoryHTML(filteredTask, i) {
+    return `
+    <div class="category">
+                <h2>CATEGORY</h2>
+                    <select id="backlogTaskCategory">
+                        <option value="" disabled selected hidden>${filteredTask[i]['category']}</option>
+                        <option>Marketing</option>
+                        <option>Product</option>
+                        <option>Sale</option>
+                    </select>
+            </div>`
+}
+
+
+/**
+ * This function returns HTML-content
+ * @param {string} filteredTask 
+ * @param {number} i 
+ * @returns HTML content
+ */
+function returnDescriptionHTML(filteredTask, i) {
+    return `
+    <div class="description">
+        <h2>DESCRIPTION</h2>
+        <textarea id="backlogTaskDescription" required="" maxlength="180">${filteredTask[i]['description']}</textarea>
+    </div>
+    `
+}
+
+
+/**
+ * This function returns HTML-content
+ * @param {string} filteredTask 
+ * @param {number} i 
+ * @returns HTML content
+ */
+function returnUrgencyHTML(filteredTask, i) {
+    return `
+    <div class="urgency">
+        <h2>URGENCY</h2>
+        <select id="backlogTaskUrgency">
+            <option value="" disabled selected hidden>${filteredTask[i]['urgency']}</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+    </div>
+    `
+}
+
+
+/**
+ * This function returns HTML-content
+ * @param {string} filteredTask 
+ * @param {number} i 
+ * @returns HTML content
+ */
+function returnAssignedToHTML(filteredTask, i) {
+    return `
+    <div class="assignedTo">
+        <h2>ASSIGNED TO</h2>
+        <div>${HTMLTemplateAssigendTo(i, filteredTask)}
+    </div>
+    `
 }
 
