@@ -73,7 +73,7 @@ function closeInfo() {
 function returnBacklogInfoHTML(filteredTask, i) {
     return `
     <div class="backlogInfo">
-        <form>
+        <form onsubmit="updateBacklogCard(${i}); return false">
             <div class="title">
                 <h2>TITLE</h2>
                 <input id="backlogTaskTitle" type="text" value="${filteredTask[i]['title']}">
@@ -108,9 +108,9 @@ function returnBacklogInfoHTML(filteredTask, i) {
                 <h2>ASSIGNED TO</h2>
                 <div>${HTMLTemplateAssigendTo(i, filteredTask)}
             </div>
-            <div class="buttonContainer">  
+            <div class="buttonContainerBacklog">  
                 <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
-                <button class="createTaskButton createTaskButton:hover" onclick="updateBacklogCard(${i})"> Save </button>
+                <button class="createTaskButton createTaskButton:hover"> Save </button>
             </div>
         </form>
     </div>
@@ -118,15 +118,47 @@ function returnBacklogInfoHTML(filteredTask, i) {
 }
 
 
-function updateBacklogCard(i) {
+async function updateBacklogCard(i) {
     allTasks[i]['title'] = document.getElementById('backlogTaskTitle').value;
     allTasks[i]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
     allTasks[i]['category'] = document.getElementById('backlogTaskCategory').value;
     allTasks[i]['urgency'] = document.getElementById('backlogTaskUrgency').value;
     allTasks[i]['description'] = document.getElementById('backlogTaskDescription').value;
     setDragAndDropId();
-    backend.setItem('tasks', allTasks);
+    await backend.setItem('tasks', allTasks);
+    window.location.href = 'backlog.html';
+}
 
+
+function getValuesForBacklogTasks() {
+    let title = document.getElementById('backlogTaskTitle');
+    let category = document.getElementById('backlogTaskCategory');
+    let description = document.getElementById('taskDescription');
+    let dueDate = document.getElementById('backlogTaskDueDate');
+    let createdDate = new Date().getTime(); //only text-format could be safed in storage --> change object to getTime (UnixTimestamp since 01.01.1970)
+    let urgency = document.getElementById('backlogTaskUrgency');
+    let assignedTo = selectedUser;
+    return [title, category, description, dueDate, createdDate, urgency, assignedTo]
+}
+
+
+function updateBacklogTask(taskStatus) {
+    [title, category, description, dueDate,
+        createdDate, urgency, assignedTo] = getValuesForBacklogTasks();
+    let task = {
+        'taskId': getNextId(),
+        'dragAndDropId': '',
+        'title': title.value,
+        'category': category.value,
+        'status': taskStatus,
+        'description': description.value,
+        'dueDate': dueDate.value,
+        'createdDate': createdDate,
+        'urgency': urgency.value,
+        'assignedTo': assignedTo,
+    };
+    allTasks.push(task);
+    backend.setItem('tasks', allTasks)
 }
 
 

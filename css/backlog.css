@@ -154,3 +154,10 @@ main {
 .max-width{
     width: 33%;
 }
+
+.buttonContainerBacklog {
+    display: flex;
+    width: 300px;
+    justify-content: flex-end;
+    padding-top: 20px;
+}
