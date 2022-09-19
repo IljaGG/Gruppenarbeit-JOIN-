@@ -32,13 +32,14 @@ function render() {
         let id = filteredTask[i]['dragAndDropId'];
 
         backlogTasks.innerHTML += `
-    <div class="backlogCard" onclick="showInfo(${i})">
+    <div class="backlogCard">
        <div id="tiny-color" class="${backlogTask['category']}"></div>
        <div class="assignedToImgContainerMain noPadding max-width">
         <div>${HTMLTemplateAssigendTo(i, filteredTask)}</div>
        </div>
        <div class="centered max-width">${backlogTask['category']}</div>
        <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
+       <div class="zoom" onclick="showInfo(${id})"> <img src="img/zoom.png" title="Show Info"> </div>
        <div class="trash" onclick="deleteBacklogCard(${id})"> <img src="img/trash.png" title="Delete Task"> </div>
        <div class="send" onclick="addToDos(${id})"> <img src="img/send.png" title="Send to Board"> </div>
     </div>
@@ -75,15 +76,15 @@ function returnBacklogInfoHTML(filteredTask, i) {
         <form>
             <div class="title">
                 <h2>TITLE</h2>
-                <input id="taskTitle" required="" type="text" value="${filteredTask[i]['title']}">
+                <input id="backlogTaskTitle" type="text" value="${filteredTask[i]['title']}">
             </div>
             <div class="dueDate">
                 <h2>DUE DATE</h2>
-                <input value="${filteredTask[i]['dueDate']}" id="taskDueDate" type="text" onfocus="(this.type='date')">
+                <input value="${filteredTask[i]['dueDate']}" id="backlogTaskDueDate" type="text" onfocus="(this.type='date')">
             </div> <br>
             <div class="category">
                 <h2>CATEGORY</h2>
-                    <select id="taskCategory">
+                    <select id="backlogTaskCategory">
                         <option value="" disabled selected hidden>${filteredTask[i]['category']}</option>
                         <option>Marketing</option>
                         <option>Product</option>
@@ -92,7 +93,7 @@ function returnBacklogInfoHTML(filteredTask, i) {
             </div>
             <div class="urgency">
                 <h2>URGENCY</h2>
-                <select id="taskUrgency">
+                <select id="backlogTaskUrgency">
                     <option value="" disabled selected hidden>${filteredTask[i]['urgency']}</option>
                     <option>Low</option>
                     <option>Medium</option>
@@ -101,7 +102,7 @@ function returnBacklogInfoHTML(filteredTask, i) {
             </div>
             <div class="description">
                 <h2>DESCRIPTION</h2>
-                <textarea id="taskDescription" required="" maxlength="180">${filteredTask[i]['description']}</textarea>
+                <textarea id="backlogTaskDescription" required="" maxlength="180">${filteredTask[i]['description']}</textarea>
             </div>
             <div class="assignedTo">
                 <h2>ASSIGNED TO</h2>
@@ -109,14 +110,25 @@ function returnBacklogInfoHTML(filteredTask, i) {
             </div>
             <div class="buttonContainer">  
                 <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
-                <button class="createTaskButton createTaskButton:hover" onclick="createTask() addTask('backlog')"> Save </button>
+                <button class="createTaskButton createTaskButton:hover" onclick="updateBacklogCard(${i})"> Save </button>
             </div>
         </form>
     </div>
     `
 }
 
-/** <div>${HTMLTemplateAssigendTo(i, filteredTask)}  */
+
+function updateBacklogCard(i) {
+    allTasks[i]['title'] = document.getElementById('backlogTaskTitle').value;
+    allTasks[i]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
+    allTasks[i]['category'] = document.getElementById('backlogTaskCategory').value;
+    allTasks[i]['urgency'] = document.getElementById('backlogTaskUrgency').value;
+    allTasks[i]['description'] = document.getElementById('backlogTaskDescription').value;
+    setDragAndDropId();
+    backend.setItem('tasks', allTasks);
+
+}
+
 
 /**
  * This function returns the content for the assigned user. Because one than more user can be assigend to a task, a inner loop is needed
