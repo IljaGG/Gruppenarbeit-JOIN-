@@ -29,8 +29,6 @@ function render() {
 
     for (let i = 0; i < filteredTask.length; i++) {
         let backlogTask = filteredTask[i];
-        let id = filteredTask[i]['dragAndDropId'];
-
         backlogTasks.innerHTML += `
     <div class="backlogCard">
        <div id="tiny-color" class="${backlogTask['category']}"></div>
@@ -39,9 +37,9 @@ function render() {
        </div>
        <div class="centered max-width">${backlogTask['category']}</div>
        <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
-       <div class="zoom" onclick="showInfo(${id})"> <img src="img/zoom.png" title="Show Info"> </div>
-       <div class="trash" onclick="deleteBacklogCard(${id})"> <img src="img/trash.png" title="Delete Task"> </div>
-       <div class="send" onclick="addToDos(${id})"> <img src="img/send.png" title="Send to Board"> </div>
+       <div class="zoom" onclick="showInfo(${filteredTask, i})"> <img src="img/zoom.png" title="Show Info"> </div>
+       <div class="trash" onclick="deleteBacklogCard(${i})"> <img src="img/trash.png" title="Delete Task"> </div>
+       <div class="send" onclick="addToDos(${i})"> <img src="img/send.png" title="Send to Board"> </div>
     </div>
     `
     }
@@ -84,13 +82,13 @@ async function closeInfo() {
  */
 function returnBacklogInfoHTML(filteredTask, i) {
     return `<div class="backlogInfo">
-        <form onsubmit="updateBacklogCard(${filteredTask[i]}); return false">
-        ${returnTitleHTML(filteredTask[i])}
-        ${returnDueDateHTML(filteredTask[i])}
-        ${returnCategoryHTML(filteredTask[i])}   
-        ${returnUrgencyHTML(filteredTask[i])}   
-        ${returnDescriptionHTML(filteredTask[i])}   
-        ${returnAssignedToHTML(filteredTask[i])}   
+        <form onsubmit="updateBacklogCard(${filteredTask, i}); return false">
+        ${returnTitleHTML(filteredTask, i)}
+        ${returnDueDateHTML(filteredTask, i)}
+        ${returnCategoryHTML(filteredTask, i)}   
+        ${returnUrgencyHTML(filteredTask, i)}   
+        ${returnDescriptionHTML(filteredTask, i)}   
+        ${returnAssignedToHTML(filteredTask, i)}   
             <div class="buttonContainerBacklog">  
                 <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
                 <button class="createTaskButton createTaskButton:hover"> Save </button>
@@ -103,12 +101,12 @@ function returnBacklogInfoHTML(filteredTask, i) {
  * This function updates the BacklogCard changes
  * @param {number} i -- the number of the current element in the for-loop of the FILTERD array
  */
-async function updateBacklogCard(i) {
-    allTasks[i]['title'] = document.getElementById('backlogTaskTitle').value;
-    allTasks[i]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
-    allTasks[i]['category'] = document.getElementById('backlogTaskCategory').value;
-    allTasks[i]['urgency'] = document.getElementById('backlogTaskUrgency').value;
-    allTasks[i]['description'] = document.getElementById('backlogTaskDescription').value;
+async function updateBacklogCard(filteredTask) {
+    allTasks[filteredTask]['title'] = document.getElementById('backlogTaskTitle').value;
+    allTasks[filteredTask]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
+    allTasks[filteredTask]['category'] = document.getElementById('backlogTaskCategory').value;
+    allTasks[filteredTask]['urgency'] = document.getElementById('backlogTaskUrgency').value;
+    allTasks[filteredTask]['description'] = document.getElementById('backlogTaskDescription').value;
     setDragAndDropId();
     await backend.setItem('tasks', allTasks);
     window.location.href = 'backlog.html';
@@ -178,6 +176,7 @@ function openMenu() {
  * @returns HTML content
  */
 function returnTitleHTML(filteredTask, i) {
+    let test = filteredTask[i]['title'];
     return `
     <div class="title">
         <h2>TITLE</h2>
@@ -269,7 +268,7 @@ function returnAssignedToHTML(filteredTask, i) {
     return `
     <div class="assignedTo">
         <h2>ASSIGNED TO</h2>
-        <div>${HTMLTemplateAssigendToBacklog(filteredTask, i)}
+        <div>${HTMLTemplateAssigendTo(filteredTask, i)}
     </div>
     `
 }
