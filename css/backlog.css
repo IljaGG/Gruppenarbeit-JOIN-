@@ -51,15 +51,12 @@ main {
     display: flex;
 }
 
-.backlogInfo {
-    background-color: #f4f4fb;
-}
-
 .d-none {
     display: none;
 }
 
 .backlogInfo form {
+    max-width: 700px;
     display: flex;
     flex-wrap: wrap;
 }

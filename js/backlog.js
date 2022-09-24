@@ -35,7 +35,7 @@ function render() {
     <div class="backlogCard">
        <div id="tiny-color" class="${backlogTask['category']}"></div>
        <div class="assignedToImgContainerMain noPadding max-width">
-        <div>${HTMLTemplateAssigendTo(i, filteredTask)}</div>
+        <div>${HTMLTemplateAssigendToBacklog(i)}</div>
        </div>
        <div class="centered max-width">${backlogTask['category']}</div>
        <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
@@ -85,12 +85,12 @@ async function closeInfo() {
 function returnBacklogInfoHTML(filteredTask, i) {
     return `<div class="backlogInfo">
         <form onsubmit="updateBacklogCard(${i}); return false">
-        ${returnTitleHTML(filteredTask, i)}
-        ${returnDueDateHTML(filteredTask, i)}
-        ${returnCategoryHTML(filteredTask, i)}   
-        ${returnUrgencyHTML(filteredTask, i)}   
-        ${returnDescriptionHTML(filteredTask, i)}   
-        ${returnAssignedToHTML(filteredTask, i)}   
+        ${returnTitleHTML(i)}
+        ${returnDueDateHTML(i)}
+        ${returnCategoryHTML(i)}   
+        ${returnUrgencyHTML(i)}   
+        ${returnDescriptionHTML(i)}   
+        ${returnAssignedToHTML(i)}   
             <div class="buttonContainerBacklog">  
                 <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
                 <button class="createTaskButton createTaskButton:hover"> Save </button>
@@ -120,10 +120,11 @@ async function updateBacklogCard(i) {
  * @param {number} filteredTask -- the number of the current element in the for-loop of the FILTERD array
  * @returns {string} --HTML content
  */
-function HTMLTemplateAssigendTo(i, filteredTask) {
+//alte function zum laufen bringen
+function HTMLTemplateAssigendToBacklog(i) {
     let content = '';
-    for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
-        let user = filteredTask[i]['assignedTo'][j];
+    for (let j = 0; j < allTasks[i]['assignedTo'].length; j++) {
+        let user = allTasks[i]['assignedTo'][j];
         content += /*html*/ ` 
             <img class="assignedToImgContainer objectFit backlogStyle" src="./img/${user}" alt="">
         `
@@ -176,11 +177,11 @@ function openMenu() {
  * @param {number} i 
  * @returns HTML content
  */
-function returnTitleHTML(filteredTask, i) {
+function returnTitleHTML(i) {
     return `
     <div class="title">
         <h2>TITLE</h2>
-        <input id="backlogTaskTitle" type="text" value="${filteredTask[i]['title']}">
+        <input id="backlogTaskTitle" type="text" value="${allTasks[i]['title']}">
     </div>
     `
 }
@@ -192,11 +193,11 @@ function returnTitleHTML(filteredTask, i) {
  * @param {number} i 
  * @returns HTML content
  */
-function returnDueDateHTML(filteredTask, i) {
+function returnDueDateHTML(i) {
     return`
          <div class="dueDate">
             <h2>DUE DATE</h2>
-            <input value="${filteredTask[i]['dueDate']}" id="backlogTaskDueDate" type="text" onfocus="(this.type='date')">
+            <input value="${allTasks[i]['dueDate']}" id="backlogTaskDueDate" type="text" onfocus="(this.type='date')">
         </div> <br>`
 }
 
@@ -207,12 +208,12 @@ function returnDueDateHTML(filteredTask, i) {
  * @param {number} i 
  * @returns HTML content
  */
-function returnCategoryHTML(filteredTask, i) {
+function returnCategoryHTML(i) {
     return `
     <div class="category">
                 <h2>CATEGORY</h2>
                     <select id="backlogTaskCategory">
-                        <option value="" disabled selected hidden>${filteredTask[i]['category']}</option>
+                        <option value="" disabled selected hidden>${allTasks[i]['category']}</option>
                         <option>Marketing</option>
                         <option>Product</option>
                         <option>Sale</option>
@@ -227,11 +228,11 @@ function returnCategoryHTML(filteredTask, i) {
  * @param {number} i 
  * @returns HTML content
  */
-function returnDescriptionHTML(filteredTask, i) {
+function returnDescriptionHTML(i) {
     return `
     <div class="description">
         <h2>DESCRIPTION</h2>
-        <textarea id="backlogTaskDescription" required="" maxlength="180">${filteredTask[i]['description']}</textarea>
+        <textarea id="backlogTaskDescription" required="" maxlength="180">${allTasks[i]['description']}</textarea>
     </div>
     `
 }
@@ -243,12 +244,12 @@ function returnDescriptionHTML(filteredTask, i) {
  * @param {number} i 
  * @returns HTML content
  */
-function returnUrgencyHTML(filteredTask, i) {
+function returnUrgencyHTML(i) {
     return `
     <div class="urgency">
         <h2>URGENCY</h2>
         <select id="backlogTaskUrgency">
-            <option value="" disabled selected hidden>${filteredTask[i]['urgency']}</option>
+            <option value="" disabled selected hidden>${allTasks[i]['urgency']}</option>
             <option>Low</option>
             <option>Medium</option>
             <option>High</option>
@@ -264,11 +265,11 @@ function returnUrgencyHTML(filteredTask, i) {
  * @param {number} i 
  * @returns HTML content
  */
-function returnAssignedToHTML(filteredTask, i) {
+function returnAssignedToHTML(i) {
     return `
     <div class="assignedTo">
         <h2>ASSIGNED TO</h2>
-        <div>${HTMLTemplateAssigendTo(i, filteredTask)}
+        <div>${HTMLTemplateAssigendToBacklog(i)}
     </div>
     `
 }
