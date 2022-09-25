@@ -63,15 +63,13 @@ function showInfo(i) {
 /**
  * This function closes backlogcards info-window
  */
-async function closeInfo() {
+function closeInfo() {
     backlogInfo = document.getElementById('backlogCardInfo');
     headlines = document.getElementById('headlines');
     backlogTasks = document.getElementById('backlogTasks');
     backlogInfo.classList.add('d-none');
     headlines.classList.remove('d-none');
     backlogTasks.classList.remove('d-none');
-    await backend.setItem('tasks', allTasks);
-    window.location.href = 'backlog.html';
 }
 
 /**
@@ -110,7 +108,8 @@ async function updateBacklogCard(i) {
     filteredTask[i]['description'] = document.getElementById('backlogTaskDescription').value;
     setDragAndDropId();
     await backend.setItem('tasks', allTasks);
-    window.location.href = 'backlog.html';
+    closeInfo();
+    render();
 }
 
 
@@ -161,7 +160,6 @@ function addToDos(i) {
  */
 function openMenu() {
     let navbar = document.getElementById('navbar');
-    let columnContainer = document.getElementById('columnContainer');
     let imgMenu = document.getElementById('imgMenu');
 
     imgMenu.addEventListener('click', () => {
@@ -178,7 +176,6 @@ function openMenu() {
  * @returns HTML content
  */
 function returnTitleHTML(filteredTask, i) {
-    let test = filteredTask[i]['title'];
     return `
     <div class="title">
         <h2>TITLE</h2>
@@ -270,7 +267,7 @@ function returnAssignedToHTML(filteredTask, i) {
     return `
     <div class="assignedTo">
         <h2>ASSIGNED TO</h2>
-        <div>${HTMLTemplateAssigendTo(filteredTask, i)}
+        <div>${HTMLTemplateAssigendTo(filteredTask, i)}</div>
     </div>
     `
 }

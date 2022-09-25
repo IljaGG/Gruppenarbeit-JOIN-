@@ -160,7 +160,8 @@ main {
 
 .buttonContainerBacklog {
     display: flex;
-    width: 300px;
+    width: 100%;
+    margin-right: 54px;
     justify-content: flex-end;
     padding-top: 20px;
 }
