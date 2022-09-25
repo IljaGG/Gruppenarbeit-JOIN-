@@ -20,6 +20,12 @@ main {
     width: 35%;
 }
 
+.backlogMainContaineWrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
 .backlogMainContainer {
     font-family: 'PT Sans';
     margin-left: 20px;

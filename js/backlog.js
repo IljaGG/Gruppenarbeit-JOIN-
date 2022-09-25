@@ -101,12 +101,13 @@ function returnBacklogInfoHTML(filteredTask, i) {
  * This function updates the BacklogCard changes
  * @param {number} i -- the number of the current element in the for-loop of the FILTERD array
  */
-async function updateBacklogCard(filteredTask) {
-    allTasks[filteredTask]['title'] = document.getElementById('backlogTaskTitle').value;
-    allTasks[filteredTask]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
-    allTasks[filteredTask]['category'] = document.getElementById('backlogTaskCategory').value;
-    allTasks[filteredTask]['urgency'] = document.getElementById('backlogTaskUrgency').value;
-    allTasks[filteredTask]['description'] = document.getElementById('backlogTaskDescription').value;
+async function updateBacklogCard(i) {
+    let filteredTask = allTasks.filter(t => t['status'] == 'backlog');
+    filteredTask[i]['title'] = document.getElementById('backlogTaskTitle').value;
+    filteredTask[i]['dueDate'] = document.getElementById('backlogTaskDueDate').value;
+    filteredTask[i]['category'] = document.getElementById('backlogTaskCategory').value;
+    filteredTask[i]['urgency'] = document.getElementById('backlogTaskUrgency').value;
+    filteredTask[i]['description'] = document.getElementById('backlogTaskDescription').value;
     setDragAndDropId();
     await backend.setItem('tasks', allTasks);
     window.location.href = 'backlog.html';
