@@ -148,7 +148,8 @@ function deleteBacklogCard(i) {
  * @param {number} i 
  */
 function addToDos(i) {
-    allTasks[i]['status'] = 'toDo';
+    let filteredTask = allTasks.filter(t => t['status'] == 'backlog');
+    filteredTask[i]['status'] = 'toDo';
     backend.setItem('tasks', allTasks);
     render();
 }
