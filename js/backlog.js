@@ -58,6 +58,7 @@ function showInfo(i) {
     headlines.classList.add('d-none');
     backlogTasks.classList.add('d-none');
     backlogInfo.innerHTML = `${returnBacklogInfoHTML(filteredTask, i)}`;
+    checkSelectedUser(filteredTask, i);
 }
 
 /**
@@ -86,13 +87,27 @@ function returnBacklogInfoHTML(filteredTask, i) {
         ${returnCategoryHTML(filteredTask, i)}   
         ${returnUrgencyHTML(filteredTask, i)}   
         ${returnDescriptionHTML(filteredTask, i)}   
-        ${returnAssignedToHTML(filteredTask, i)}   
+        ${returnAssignedToHTML(filteredTask, i) }   
             <div class="buttonContainerBacklog">  
-                <button class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
+                <button type="button" class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
                 <button class="createTaskButton createTaskButton:hover"> Save </button>
             </div>
         </form>
     </div>`
+}
+
+function checkSelectedUser(filteredTask, i){
+    selectedUser = []; 
+    for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
+        let currentUser = filteredTask[i]['assignedTo'][j];
+        fillSelectedUser(currentUser);
+    }
+}
+
+function fillSelectedUser(currentUser){
+    let userID = document.getElementById('Backlog-' + currentUser);
+    userID.classList.add('avatar-selected');
+    selectedUser.push(currentUser);
 }
 
 /**
@@ -106,6 +121,7 @@ async function updateBacklogCard(i) {
     filteredTask[i]['category'] = document.getElementById('backlogTaskCategory').value;
     filteredTask[i]['urgency'] = document.getElementById('backlogTaskUrgency').value;
     filteredTask[i]['description'] = document.getElementById('backlogTaskDescription').value;
+    filteredTask[i]['assignedTo'] = selectedUser;
     setDragAndDropId();
     await backend.setItem('tasks', allTasks);
     closeInfo();
@@ -209,14 +225,14 @@ function returnDueDateHTML(filteredTask, i) {
 function returnCategoryHTML(filteredTask, i) {
     return `
     <div class="category">
-                <h2>CATEGORY</h2>
-                    <select id="backlogTaskCategory">
-                        <option value="" disabled selected hidden>${filteredTask[i]['category']}</option>
-                        <option>Marketing</option>
-                        <option>Product</option>
-                        <option>Sale</option>
-                    </select>
-            </div>`
+        <h2>CATEGORY</h2>
+            <select id="backlogTaskCategory">
+                <option value="${filteredTask[i]['category']}" disabled selected hidden>${filteredTask[i]['category']}</option>
+                <option>Marketing</option>
+                <option>Product</option>
+                <option>Sale</option>
+            </select>
+    </div>`
 }
 
 
@@ -247,7 +263,7 @@ function returnUrgencyHTML(filteredTask, i) {
     <div class="urgency">
         <h2>URGENCY</h2>
         <select id="backlogTaskUrgency">
-            <option value="" disabled selected hidden>${filteredTask[i]['urgency']}</option>
+            <option value="${filteredTask[i]['urgency']}" disabled selected hidden>${filteredTask[i]['urgency']}</option>
             <option>Low</option>
             <option>Medium</option>
             <option>High</option>
@@ -259,15 +275,22 @@ function returnUrgencyHTML(filteredTask, i) {
 
 /**
  * This function returns HTML-content
- * @param {string} filteredTask 
- * @param {number} i 
  * @returns HTML content
  */
-function returnAssignedToHTML(filteredTask, i) {
+function returnAssignedToHTML() {
     return `
     <div class="assignedTo">
         <h2>ASSIGNED TO</h2>
-        <div>${HTMLTemplateAssigendTo(filteredTask, i)}</div>
+        <div class="assignedToImgContainerMain">
+            <img id="Backlog-TP.png" onclick="selectUser('Backlog-','TP.png',0)" class="assignedToImgContainer objectFit"
+                src="./img/TP.png" alt="TP.png">
+            <img id="Backlog-IG.png" onclick="selectUser('Backlog-','IG.png',1)" class="assignedToImgContainer objectFit"
+                src="./img/IG.png" alt="IG.png">
+            <img id="Backlog-VW.png" onclick="selectUser('Backlog-','VW.png',2)" class="assignedToImgContainer objectFit"
+                src="./img/VW.png" alt="VW.png">
+            <img id="Backlog-RD.png" onclick="selectUser('Backlog-','RD.png',3)" class="assignedToImgContainer objectFit"
+                src="./img/RD.png" alt="RD.png">
+        </div>
     </div>
     `
 }

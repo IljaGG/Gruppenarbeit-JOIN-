@@ -13,12 +13,12 @@ async function init() {
  * This function is used to select the "assigned to"-User. More than one user can be selected
  * @param {string} i -- the ID of the current User is used to push them into the currentUser-Array
  */
-function selectUser(i) {
-    let user = document.getElementById('user-' + i);
+function selectUser(dest, img, i) {
+    let user = document.getElementById(dest + img);
     user.classList.toggle('avatar-selected');
     if (selectedUser.includes(users[i])) {
         //if a user is clicked twice it should be deleted from the array
-        selectedUser = selectedUser.filter(a => a != i);
+        selectedUser = selectedUser.filter(a => a != users[i]);
     } else {
         //push the selected user into the array if the value isn´t available yet
         selectedUser.push(users[i]);
