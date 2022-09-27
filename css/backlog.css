@@ -40,6 +40,7 @@ main {
     margin-top: 5px;
     color: #3a3ab6;
 }
+
 .backlogWrapper {
     position: relative;
     width: 70vw;
@@ -81,6 +82,22 @@ main {
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2)
 }
 
+.assignedToImgContainerBacklog {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 100%;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.assignedToImgContainerBacklog p {
+    font-weight: bold;
+}
+
 .zoom img {
     position: absolute;
     right: 65px;
@@ -89,7 +106,7 @@ main {
     opacity: 0.15;
 }
 
-.trash img{
+.trash img {
     position: absolute;
     right: 5px;
     bottom: 5px;
@@ -97,7 +114,7 @@ main {
     opacity: 0.5;
 }
 
-.send img{
+.send img {
     position: absolute;
     right: 35px;
     bottom: 5px;
@@ -105,7 +122,8 @@ main {
     opacity: 0.5;
 }
 
-.trash img:hover, .send img:hover{
+.trash img:hover,
+.send img:hover {
     opacity: 1;
     cursor: pointer;
 }
@@ -144,17 +162,17 @@ main {
     border-bottom-left-radius: 10px;
 }
 
-.noPadding{
+.noPadding {
     padding: 0 !important;
-    cursor: default  !important
+    cursor: default !important
 }
 
-.backlogStyle{
+.backlogStyle {
     opacity: 1 !important;
     border: none !important;
 }
 
-.max-width{
+.max-width {
     width: 33%;
 }
 

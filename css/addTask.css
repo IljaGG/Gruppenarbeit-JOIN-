@@ -104,7 +104,7 @@ textarea {
 }
 
 
-.assignedToImgContainer  {
+.assignedToImgContainer {
     margin-left: 5px;
     margin-right: 5px;
     width: 60px;
@@ -116,17 +116,17 @@ textarea {
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2)
 }
 
-.assignedToImgContainer:hover{
+.assignedToImgContainer:hover {
     opacity: 1;
 }
 
-.avatar-selected{
+.avatar-selected {
     opacity: 1;
     border: 2px solid rgba(58, 58, 182, 1);
 }
 
-.objectFit{
-    object-position: 62% 0%;   
+.objectFit {
+    object-position: 62% 0%;
 }
 
 .buttonContainer {
@@ -171,7 +171,7 @@ textarea {
 }
 
 
-.containerOverlay{
+.containerOverlay {
     background-color: rgb(54, 56, 56, 0.8);
     display: flex;
     align-items: center;
@@ -183,7 +183,7 @@ textarea {
 }
 
 
-.contentOverlay{
+.contentOverlay {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,14 +198,14 @@ textarea {
 }
 
 
-.overlayItems{
+.overlayItems {
     display: flex;
     width: 100%;
     justify-content: space-around;
 }
 
 
-.taskDone{
+.taskDone {
     font-size: 2rem;
     font-weight: bold;
 }

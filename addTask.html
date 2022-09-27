@@ -42,10 +42,10 @@
         <div class="contentOverlay">
             <p class="taskDone">Task done!</p>
             <div class="overlayItems">
-                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields(), redirection('/backlog.html')"
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields(), redirection('backlog.html')"
                     class="createTaskButton">Go to
                     Backlog</button>
-                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields(), redirection('/board.html')"
+                <button onclick="overlay('overlayTaskConfirmation'), resetInputFields(), redirection('board.html')"
                     class="createTaskButton">Go to
                     To Dos</button>
                 <button onclick="overlay('overlayTaskConfirmation'), resetInputFields()" class="createTaskButton">Create
@@ -102,14 +102,14 @@
                         <h2>ASSIGNED TO</h2>
                     </div>
                     <div class="assignedToImgContainerMain">
-                        <img id="Task-TP.png" onclick="selectUser('Task-', 'TP.png', 0)" class="assignedToImgContainer objectFit"
-                            src="./img/TP.png" alt="">
-                        <img id="Task-IG.png" onclick="selectUser('Task-', 'IG.png', 1)" class="assignedToImgContainer objectFit"
-                            src="./img/IG.png" alt="">
-                        <img id="Task-VW.png" onclick="selectUser('Task-', 'VW.png', 2)" class="assignedToImgContainer objectFit"
-                            src="./img/VW.png" alt="">
-                        <img id="Task-RD.png" onclick="selectUser('Task-', 'RD.png', 3)" class="assignedToImgContainer objectFit"
-                            src="./img/RD.png" alt="">
+                        <img id="Task-TP.png" onclick="selectUser('Task-', 'TP.png', 0)"
+                            class="assignedToImgContainer objectFit" src="./img/TP.png" alt="">
+                        <img id="Task-IG.png" onclick="selectUser('Task-', 'IG.png', 1)"
+                            class="assignedToImgContainer objectFit" src="./img/IG.png" alt="">
+                        <img id="Task-VW.png" onclick="selectUser('Task-', 'VW.png', 2)"
+                            class="assignedToImgContainer objectFit" src="./img/VW.png" alt="">
+                        <img id="Task-RD.png" onclick="selectUser('Task-', 'RD.png', 3)"
+                            class="assignedToImgContainer objectFit" src="./img/RD.png" alt="">
                     </div>
                     <div class="buttonContainer">
                         <div class="cancelButton" onclick="resetInputFields()">CANCEL</div>

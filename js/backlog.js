@@ -87,7 +87,7 @@ function returnBacklogInfoHTML(filteredTask, i) {
         ${returnCategoryHTML(filteredTask, i)}   
         ${returnUrgencyHTML(filteredTask, i)}   
         ${returnDescriptionHTML(filteredTask, i)}   
-        ${returnAssignedToHTML(filteredTask, i) }   
+        ${returnAssignedToHTML(filteredTask, i)}   
             <div class="buttonContainerBacklog">  
                 <button type="button" class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
                 <button class="createTaskButton createTaskButton:hover"> Save </button>
@@ -96,15 +96,15 @@ function returnBacklogInfoHTML(filteredTask, i) {
     </div>`
 }
 
-function checkSelectedUser(filteredTask, i){
-    selectedUser = []; 
+function checkSelectedUser(filteredTask, i) {
+    selectedUser = [];
     for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
         let currentUser = filteredTask[i]['assignedTo'][j];
         fillSelectedUser(currentUser);
     }
 }
 
-function fillSelectedUser(currentUser){
+function fillSelectedUser(currentUser) {
     let userID = document.getElementById('Backlog-' + currentUser);
     userID.classList.add('avatar-selected');
     selectedUser.push(currentUser);
@@ -140,7 +140,7 @@ function HTMLTemplateAssigendTo(filteredTask, i) {
     for (let j = 0; j < filteredTask[i]['assignedTo'].length; j++) {
         let user = filteredTask[i]['assignedTo'][j];
         content += /*html*/ ` 
-            <img class="assignedToImgContainer objectFit backlogStyle" src="./img/${user}" alt="">
+            <img class="assignedToImgContainerBacklog objectFit backlogStyle" src="./img/${user}" alt="">
         `
     }
     return content
@@ -208,7 +208,7 @@ function returnTitleHTML(filteredTask, i) {
  * @returns HTML content
  */
 function returnDueDateHTML(filteredTask, i) {
-    return`
+    return `
          <div class="dueDate">
             <h2>DUE DATE</h2>
             <input value="${filteredTask[i]['dueDate']}" id="backlogTaskDueDate" type="text" onfocus="(this.type='date')">

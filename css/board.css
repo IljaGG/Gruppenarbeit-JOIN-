@@ -32,9 +32,10 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 75%;
+    height: 550px;
     background-color: #F5F7F8;
-    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2)
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+    overflow-y: auto;
 }
 
 
@@ -77,12 +78,13 @@ main {
     align-items: flex-end;
 }
 
-.assignedTo img, .calendar img {
+.assignedTo img,
+.calendar img {
     width: 20px;
     height: 20px;
 }
 
-.calendar{
+.calendar {
     display: flex;
     align-items: center;
 }
@@ -91,41 +93,41 @@ main {
     margin-top: 10px;
 }
 
-.marginRight{
+.marginRight {
     margin-right: 5px;
 }
 
-.priority{
+.priority {
     display: inline-block;
     padding: 8px 15px 8px 15px;
     border-radius: 15px;
     color: white;
 }
 
-.spaceBetween{
+.spaceBetween {
     display: flex;
     flex-direction: column;
     justify-content: space-between
 }
 
-.taskID{
+.taskID {
     font-size: 1.1rem;
-    font-weight: 600;   
+    font-weight: 600;
 }
 
-.dueDate{
+.dueDate {
     color: #03037F;
 }
 
-.Low{
+.Low {
     background-color: #B7BB2C;
 }
 
-.Medium{
+.Medium {
     background-color: #EF8F1C;
 }
 
-.High{
+.High {
     background-color: #C6212A;
 }
 
@@ -157,35 +159,35 @@ main {
     cursor: pointer;
 }
 
-.end{
+.end {
     align-items: flex-end;
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
 }
 
-#note{
+#note {
     color: #03037F;
     opacity: 0.5;
     cursor: pointer;
     transition: all 100ms ease-in-out;
 }
 
-#note:hover{
+#note:hover {
     opacity: 1;
 }
 
-.task-icons{
+.task-icons {
     display: flex;
     align-items: center;
 }
 
-.toogleDescription{
+.toogleDescription {
     word-break: break-all;
     visibility: hidden;
     transition: visibility .3s, max-height .5s;
@@ -198,36 +200,37 @@ main {
     visibility: visible;
     /* Set max-height to something bigger than the box could ever be */
     max-height: 1000px;
-  }
+}
 
-.close{
+.close {
     color: red;
     opacity: 0.5;
 }
 
-.done{
+.done {
     color: green;
     opacity: 0.5;
 }
 
-.close:hover, .done:hover{
+.close:hover,
+.done:hover {
     opacity: 1;
     cursor: pointer;
 }
 
 
 
-.task-icons.description{
+.task-icons.description {
     justify-content: flex-end !important;
 }
 
-.singleDescription{
+.singleDescription {
     border: 1px solid gray;
     border-radius: 7px;
     padding: 5px;
 }
 
-.objectFit{
+.objectFit {
     object-fit: cover;
 }
 
