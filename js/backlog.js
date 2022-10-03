@@ -40,7 +40,7 @@ function render() {
        <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
        <div class="zoom" onclick="showInfo(${filteredTask, i})"> <img src="img/zoom.png" title="Show Info"> </div>
        <div class="trash" onclick="deleteBacklogCard(${id})"> <img src="img/trash.png" title="Delete Task"> </div>
-       <div class="send" onclick="addToDos(${id})"> <img src="img/send.png" title="Send to Board"> </div>
+       <div class="send" onclick="addToDos(${i})"> <img src="img/send.png" title="Send to Board"> </div>
     </div>
     `
     }

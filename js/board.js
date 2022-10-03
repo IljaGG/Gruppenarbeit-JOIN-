@@ -86,7 +86,7 @@ function HTMLTemplateTasks(i, task, formattedDate, filteredTask) {
             <div class="taskContainer" style="${styleBorderTop(task['category'])}" draggable="true" ondragstart="startDragging(${task['dragAndDropId']})">
                 <div class="spaceBetween">
                     <div>
-                        <div class="taskID">Task ${task['taskId']}</div>
+                        <div class="taskID">${task['title']}</div>
                         <div class="priority marginTop ${task['urgency']}">${task['urgency']}</div>
                     </div>
                     <div class="toogleDescription" id="toggle${task['dragAndDropId']}"> 
