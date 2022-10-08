@@ -21,9 +21,11 @@ main {
 }
 
 .backlogMainContaineWrapper {
-    width: 100vw;
+    
     display: flex;
     justify-content: center;
+    width: 80%;
+    max-width: 1024px;
 }
 
 .backlogMainContainer {
@@ -71,6 +73,9 @@ main {
 .backlogCard {
     height: 90px;
     display: flex;
+    font-family: 'PT Sans';
+    font-size: 17.6px;
+    font-weight: 600;
     position: relative;
     justify-content: space-between;
     align-items: center;
@@ -79,7 +84,24 @@ main {
     margin-bottom: 10px;
     border-radius: 10px;
     transition: all 100ms ease-in-out;
-    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2)
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+}
+
+.emptyBacklogCard {
+    height: 90px;
+    display: flex;
+    font-family: 'PT Sans';
+    font-size: 17.6px;
+    font-weight: 600;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+    background-color: #f4f4fb;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: all 100ms ease-in-out;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
 }
 
 .assignedToImgContainerBacklog {

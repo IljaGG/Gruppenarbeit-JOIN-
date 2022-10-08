@@ -26,24 +26,30 @@ function render() {
     backlogTasks = document.getElementById('backlogTasks');
     backlogTasks.innerHTML = '';
     let filteredTask = allTasks.filter(t => t['status'] == 'backlog');
-
-    for (let i = 0; i < filteredTask.length; i++) {
-        let backlogTask = filteredTask[i];
-        let id = filteredTask[i]['dragAndDropId'];
-        backlogTasks.innerHTML += `
-    <div class="backlogCard">
-       <div id="tiny-color" class="${backlogTask['category']}"></div>
-       <div class="assignedToImgContainerMain noPadding max-width">
-        <div>${HTMLTemplateAssigendTo(filteredTask, i)}</div>
-       </div>
-       <div class="centered max-width">${backlogTask['category']}</div>
-       <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
-       <div class="zoom" onclick="showInfo(${filteredTask, i})"> <img src="img/zoom.png" title="Show Info"> </div>
-       <div class="trash" onclick="deleteBacklogCard(${id})"> <img src="img/trash.png" title="Delete Task"> </div>
-       <div class="send" onclick="addToDos(${i})"> <img src="img/send.png" title="Send to Board"> </div>
-    </div>
-    `
+    if (allTasks.filter(t => t['status'] == 'backlog').length == 0) {
+        let headlines = document.getElementById('headlines');
+        headlines.classList.add('d-none');
+        backlogTasks.innerHTML = `<div class="emptyBacklogCard">No tasks in backlog</div>`;
+    } else {
+        for (let i = 0; i < filteredTask.length; i++) {
+            let backlogTask = filteredTask[i];
+            let id = filteredTask[i]['dragAndDropId'];
+                backlogTasks.innerHTML += `
+                <div class="backlogCard">
+                <div id="tiny-color" class="${backlogTask['category']}"></div>
+                <div class="assignedToImgContainerMain noPadding max-width">
+                <div>${HTMLTemplateAssigendTo(filteredTask, i)}</div>
+                </div>
+                <div class="centered max-width">${backlogTask['category']}</div>
+                <div class="description-width text-align-right max-width">${backlogTask['description']}</div>
+                <div class="zoom" onclick="showInfo(${filteredTask, i})"> <img src="img/zoom.png" title="Show Info"> </div>
+               <div class="trash" onclick="deleteBacklogCard(${id})"> <img src="img/trash.png" title="Delete Task"> </div>
+               <div class="send" onclick="addToDos(${i})"> <img src="img/send.png" title="Send to Board"> </div>
+            </div>
+            `
+        }
     }
+        
 }
 
 /**
