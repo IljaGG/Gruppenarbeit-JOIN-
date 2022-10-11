@@ -87,20 +87,25 @@ function closeInfo() {
  * @returns HTML content
  */
 function returnBacklogInfoHTML(filteredTask, i) {
-    return `<div class="backlogInfo">
-        <form onsubmit="updateBacklogCard(${filteredTask, i}); return false">
-        ${returnTitleHTML(filteredTask, i)}
-        ${returnDueDateHTML(filteredTask, i)}
-        ${returnCategoryHTML(filteredTask, i)}   
-        ${returnUrgencyHTML(filteredTask, i)}   
-        ${returnDescriptionHTML(filteredTask, i)}   
-        ${returnAssignedToHTML(filteredTask, i)}   
-            <div class="buttonContainerBacklog">  
-                <button type="button" class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
-                <button class="createTaskButton createTaskButton:hover"> Save </button>
-            </div>
-        </form>
-    </div>`
+    return `
+        <div class="backlogInfo">
+            <form onsubmit="updateBacklogCard(${filteredTask, i}); return false">
+                <div class="left-half">
+                ${returnTitleHTML(filteredTask, i)}
+                ${returnCategoryHTML(filteredTask, i)}
+                ${returnDescriptionHTML(filteredTask, i)} 
+                </div>
+                <div class="right-half ">
+                ${returnDueDateHTML(filteredTask, i)}
+                ${returnUrgencyHTML(filteredTask, i)}   
+                ${returnAssignedToHTML(filteredTask, i)}   
+                <div class="buttonContainerBacklog">  
+                    <button type="button" class="cancelButton cancelButton:hover" onclick="closeInfo()"> Cancel </button>
+                    <button class="createTaskButton createTaskButton:hover"> Save </button>
+                </div>
+                </div>
+            </form>
+        </div>`
 }
 
 function checkSelectedUser(filteredTask, i) {
@@ -268,7 +273,7 @@ function returnDescriptionHTML(filteredTask, i) {
 function returnUrgencyHTML(filteredTask, i) {
     return `
     <div class="urgency">
-        <h2>URGENCY</h2>
+        <h2 class="urgecy-h2">URGENCY</h2>
         <select id="backlogTaskUrgency">
             <option value="${filteredTask[i]['urgency']}" disabled selected hidden>${filteredTask[i]['urgency']}</option>
             <option>Low</option>

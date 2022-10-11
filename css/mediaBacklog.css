@@ -38,12 +38,24 @@
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1079px) {
 
     main {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .backlogWrapper {
+        width: 100vw;
+    }
+
+    .backlogInfo form  {
+        display: flex;
+        justify-content: center;
+        border-radius: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     nav {
@@ -54,7 +66,14 @@
     }
 
     .backlogMainContainer {
+        align-self: center;
         margin-left: 0 !important;
+    }
+    
+    .backlogInfo form {
+
+        max-width: 100vw;
+        width: 100vw;
     }
 
     .responsiveMenu {
@@ -80,26 +99,40 @@
 }
 
 
-/* @media (max-width: 990px) {
+@media (max-width: 1047px) {
 
-    .backlogWrapper {
-        width: 97%;
+    .backlogInfo input select{
+        width: 280px !important;
     }
+}
 
-    .backlogHeadline {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 685px) {
+    .backlogInfo form {
+     border-radius: 8px;
+    padding: 22px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    .right-half {
+        margin-left: -34px;
     }
-}*/
+}
 
+@media (max-width: 536px) {
+
+    .backlogMainContainer {
+        width: 100vw;
+    }
+}
 
 @media (max-width: 470px) {
 
     .backlogHeadlines {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
+
     }
 
     .description-width {
@@ -116,5 +149,9 @@
 
     .centered {
         width: unset;
+    }
+
+    .backlogInfo input select{
+        width: 280px;
     }
 }
