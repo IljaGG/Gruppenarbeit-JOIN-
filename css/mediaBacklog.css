@@ -46,16 +46,9 @@
         align-items: center;
     }
 
-    .backlogWrapper {
-        width: 100vw;
-    }
-
     .backlogInfo form  {
         display: flex;
         justify-content: center;
-        border-radius: 0px;
-        padding-left: 0;
-        padding-right: 0;
     }
 
     nav {
@@ -68,12 +61,6 @@
     .backlogMainContainer {
         align-self: center;
         margin-left: 0 !important;
-    }
-    
-    .backlogInfo form {
-
-        max-width: 100vw;
-        width: 100vw;
     }
 
     .responsiveMenu {
@@ -104,6 +91,9 @@
     .backlogInfo input select{
         width: 280px !important;
     }
+    .right-half {
+        margin-left: -34px;
+    }
 }
 
 @media (max-width: 685px) {
@@ -116,9 +106,6 @@
     flex-direction: column;
     align-items: center;
 }
-    .right-half {
-        margin-left: -34px;
-    }
 }
 
 @media (max-width: 536px) {
